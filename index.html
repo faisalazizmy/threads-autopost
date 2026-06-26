@@ -112,15 +112,15 @@
 
     function getNextSlot() {
       const now = getMYTime();
-      const totalMins = now.getHours() * 60 + now.getMinutes();
-      const slotMins = [8*60, 12*60, 13*60, 21*60];
-      for (let i = 0; i < slotMins.length; i++) {
-        if (totalMins < slotMins[i]) {
-          return { slot: SLOTS[i], msUntil: (slotMins[i] - totalMins) * 60000 };
+      const totalMs = (now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds()) * 1000;
+      const slotMs = [8*3600, 12*3600, 13*3600, 21*3600].map(s => s * 1000);
+      for (let i = 0; i < slotMs.length; i++) {
+        if (totalMs < slotMs[i]) {
+          return { slot: SLOTS[i], msUntil: slotMs[i] - totalMs };
         }
       }
-      const minsLeft = (24*60 - totalMins) * 60000;
-      return { slot: SLOTS[0], msUntil: minsLeft + 8*60*60000 };
+      const msLeft = 24 * 3600 * 1000 - totalMs;
+      return { slot: SLOTS[0], msUntil: msLeft + 8 * 3600 * 1000 };
     }
 
     function formatCountdown(ms) {
