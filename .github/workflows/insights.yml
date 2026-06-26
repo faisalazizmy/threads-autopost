@@ -1,0 +1,35 @@
+name: Fetch Insights
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  insights:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Backfill post IDs + fetch insights
+        env:
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
+        run: python fetch_insights.py
+
+      - name: Commit log
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add log.json
+          git diff --staged --quiet || git commit -m "log: backfill post IDs + update insights"
+          git push
