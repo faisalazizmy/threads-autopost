@@ -273,17 +273,25 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    fetch('https://api.github.com/repos/faisalazizmy/threads-autopost/actions/runs?per_page=12')
-      .then(r => r.json())
-      .then(data => {
-        if (data.workflow_runs) {
-          buildRuns(data.workflow_runs);
-        } else {
-          const msg = data.message || JSON.stringify(data);
-          document.getElementById('runs').innerHTML = `<span style="color:#f85149">${msg}</span>`;
-        }
-      })
-      .catch(e => { document.getElementById('runs').innerHTML = `<span style="color:#f85149">fetch error: ${e.message}</span>`; });
+    const RUNS_CACHE_KEY = 'gh_runs_cache';
+    const RUNS_CACHE_TTL = 5 * 60 * 1000; // 5 minit
+    const cached = JSON.parse(localStorage.getItem(RUNS_CACHE_KEY) || 'null');
+    if (cached && Date.now() - cached.ts < RUNS_CACHE_TTL) {
+      buildRuns(cached.runs);
+    } else {
+      fetch('https://api.github.com/repos/faisalazizmy/threads-autopost/actions/runs?per_page=12')
+        .then(r => r.json())
+        .then(data => {
+          if (data.workflow_runs) {
+            localStorage.setItem(RUNS_CACHE_KEY, JSON.stringify({ ts: Date.now(), runs: data.workflow_runs }));
+            buildRuns(data.workflow_runs);
+          } else {
+            const msg = data.message || JSON.stringify(data);
+            document.getElementById('runs').innerHTML = `<span style="color:#f85149">${msg}</span>`;
+          }
+        })
+        .catch(e => { document.getElementById('runs').innerHTML = `<span style="color:#f85149">fetch error: ${e.message}</span>`; });
+    }
 
     fetch('log.json?t=' + Date.now())
       .then(r => r.json())
