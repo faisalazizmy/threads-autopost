@@ -1,0 +1,38 @@
+name: Threads Auto Post
+
+on:
+  schedule:
+    - cron: '0 0 * * *'   # 8am Malaysia (UTC+8)
+    - cron: '0 4 * * *'   # 12pm Malaysia
+    - cron: '0 5 * * *'   # 1pm Malaysia
+    - cron: '0 13 * * *'  # 9pm Malaysia
+  workflow_dispatch:
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Determine slot and run
+        env:
+          TZ: Asia/Kuala_Lumpur
+        run: |
+          HOUR=$(TZ=Asia/Kuala_Lumpur date +%H)
+          if [ "$HOUR" = "08" ]; then
+            python post_today.py pagi
+          elif [ "$HOUR" = "12" ]; then
+            python thread_today.py
+          elif [ "$HOUR" = "13" ]; then
+            python post_today.py tengahari
+          elif [ "$HOUR" = "21" ]; then
+            python post_today.py malam
+          fi
