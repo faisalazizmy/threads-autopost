@@ -84,7 +84,6 @@
   <div class="perf-grid" id="perf-grid">
     <div class="perf-card"><div class="perf-val" id="p-posts">—</div><div class="perf-label">Posts</div></div>
     <div class="perf-card"><div class="perf-val" id="p-views">—</div><div class="perf-label">Views</div></div>
-    <div class="perf-card"><div class="perf-val" id="p-likes">—</div><div class="perf-label">Likes</div></div>
     <div class="perf-card"><div class="perf-val" id="p-replies">—</div><div class="perf-label">Replies</div></div>
   </div>
 
@@ -251,7 +250,6 @@
       const fmt = n => n >= 1000 ? (n/1000).toFixed(1)+'k' : String(n);
       document.getElementById('p-posts').textContent = ok.length;
       document.getElementById('p-views').textContent = fmt(ok.reduce((s,l) => s+(l.views||0), 0));
-      document.getElementById('p-likes').textContent = fmt(ok.reduce((s,l) => s+(l.likes||0), 0));
       document.getElementById('p-replies').textContent = fmt(ok.reduce((s,l) => s+(l.replies||0), 0));
     }
 
@@ -275,10 +273,17 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    fetch('https://api.github.com/repos/faisalazizmy/threads-autopost/actions/runs?per_page=10')
+    fetch('https://api.github.com/repos/faisalazizmy/threads-autopost/actions/runs?per_page=12')
       .then(r => r.json())
-      .then(data => buildRuns(data.workflow_runs || []))
-      .catch(() => { document.getElementById('runs').innerHTML = '<div class="empty">gagal muatkan runs.</div>'; });
+      .then(data => {
+        if (data.workflow_runs) {
+          buildRuns(data.workflow_runs);
+        } else {
+          const msg = data.message || JSON.stringify(data);
+          document.getElementById('runs').innerHTML = `<span style="color:#f85149">${msg}</span>`;
+        }
+      })
+      .catch(e => { document.getElementById('runs').innerHTML = `<span style="color:#f85149">fetch error: ${e.message}</span>`; });
 
     fetch('log.json?t=' + Date.now())
       .then(r => r.json())
