@@ -41,8 +41,7 @@ jobs:
           elif [ "$HOUR" = "21" ]; then
             python post_today.py malam
           else
-            echo "Manual trigger — running tengahari"
-            python post_today.py tengahari
+            echo "Tiada slot untuk jam $HOUR MYT — skip."
           fi
 
       - name: Fetch insights

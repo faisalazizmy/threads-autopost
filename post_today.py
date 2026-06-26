@@ -133,6 +133,18 @@ def post(text, slot, day):
         print(f"Gagal publish: {r2.json()}")
         save_log(text, slot, day, "fail")
 
+def already_posted(slot, day):
+    import json
+    log_file = "log.json"
+    if not os.path.exists(log_file):
+        return False
+    with open(log_file) as f:
+        try:
+            logs = json.load(f)
+        except:
+            return False
+    return any(l.get("slot") == slot and l.get("day") == day and l.get("status") == "ok" for l in logs)
+
 today = datetime.now().strftime("%A")
 slot = sys.argv[1] if len(sys.argv) > 1 else None
 
@@ -142,5 +154,7 @@ elif today not in POSTS:
     print(f"Tiada post untuk hari {today}")
 elif slot not in POSTS[today]:
     print(f"Slot '{slot}' tidak wujud.")
+elif already_posted(slot, today):
+    print(f"Slot '{slot}' untuk {today} dah dipost hari ni — skip.")
 else:
     post(POSTS[today][slot], slot, today)

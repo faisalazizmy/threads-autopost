@@ -67,7 +67,23 @@ THREADS = {
     },
 }
 
-def post_thread():
+def def already_posted_thread(day):
+    import json
+    log_file = "log.json"
+    if not os.path.exists(log_file):
+        return False
+    with open(log_file) as f:
+        try:
+            logs = json.load(f)
+        except:
+            return False
+    return any(l.get("slot") == "thread" and l.get("day") == day and l.get("status") == "ok" for l in logs)
+
+today_check = datetime.now().strftime("%A")
+if already_posted_thread(today_check):
+    print(f"Thread untuk {today_check} dah dipost hari ni — skip.")
+else:
+    post_thread():
     today = datetime.now().strftime("%A")
     if today not in THREADS:
         print(f"Tiada thread untuk {today}")
