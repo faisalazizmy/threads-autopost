@@ -45,15 +45,23 @@
     .stat { display: flex; align-items: center; gap: 4px; }
     .empty { text-align: center; color: #8b949e; padding: 40px 0; font-size: 14px; }
 
-    .run-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 14px 18px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-    .run-card.ok { border-left: 3px solid #238636; }
-    .run-card.fail { border-left: 3px solid #da3633; }
-    .run-card.running { border-left: 3px solid #58a6ff; }
-    .run-left { flex: 1; min-width: 0; }
-    .run-title { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .run-meta { font-size: 11px; color: #8b949e; margin-top: 3px; }
-    .run-trigger { font-size: 10px; color: #484f58; font-family: monospace; margin-top: 2px; }
-    .run-duration { font-size: 12px; color: #8b949e; text-align: right; white-space: nowrap; }
+    .perf-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .perf-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 12px 14px; text-align: center; }
+    .perf-val { font-size: 22px; font-weight: 700; color: #e6edf3; font-variant-numeric: tabular-nums; }
+    .perf-label { font-size: 10px; color: #8b949e; margin-top: 2px; text-transform: uppercase; letter-spacing: .05em; }
+
+    .terminal { background: #0d1117; border: 1px solid #30363d; border-radius: 10px; overflow: hidden; }
+    .terminal-bar { background: #161b22; padding: 8px 14px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid #30363d; }
+    .terminal-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .terminal-title { font-size: 11px; color: #8b949e; margin-left: 6px; font-family: monospace; }
+    .terminal-body { padding: 10px 14px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; line-height: 2; }
+    .tline { display: flex; gap: 10px; align-items: baseline; white-space: nowrap; overflow: hidden; }
+    .tline .ts { color: #484f58; flex-shrink: 0; }
+    .tline .ok { color: #3fb950; flex-shrink: 0; }
+    .tline .fail { color: #f85149; flex-shrink: 0; }
+    .tline .spin { color: #58a6ff; flex-shrink: 0; }
+    .tline .dur { color: #6e7681; flex-shrink: 0; }
+    .tline .trg { color: #8b949e; overflow: hidden; text-overflow: ellipsis; }
   </style>
 </head>
 <body>
@@ -72,8 +80,24 @@
   <div class="section-title">Jadual Hari Ini</div>
   <div class="schedule-grid" id="schedule-grid"></div>
 
-  <div class="section-title">GitHub Actions Log</div>
-  <div id="runs"><div class="empty">memuatkan...</div></div>
+  <div class="section-title">Performance</div>
+  <div class="perf-grid" id="perf-grid">
+    <div class="perf-card"><div class="perf-val" id="p-posts">—</div><div class="perf-label">Posts</div></div>
+    <div class="perf-card"><div class="perf-val" id="p-views">—</div><div class="perf-label">Views</div></div>
+    <div class="perf-card"><div class="perf-val" id="p-likes">—</div><div class="perf-label">Likes</div></div>
+    <div class="perf-card"><div class="perf-val" id="p-replies">—</div><div class="perf-label">Replies</div></div>
+  </div>
+
+  <div class="section-title">GitHub Actions</div>
+  <div class="terminal">
+    <div class="terminal-bar">
+      <div class="terminal-dot" style="background:#ff5f57"></div>
+      <div class="terminal-dot" style="background:#febc2e"></div>
+      <div class="terminal-dot" style="background:#28c840"></div>
+      <span class="terminal-title">threads-autopost / autopost.yml</span>
+    </div>
+    <div class="terminal-body" id="runs"><span style="color:#484f58">memuatkan...</span></div>
+  </div>
 
   <div class="section-title">History Post</div>
   <div id="log"><div class="empty">memuatkan...</div></div>
@@ -222,35 +246,30 @@
       });
     }
 
+    function buildPerf(logs) {
+      const ok = logs.filter(l => l.status === 'ok');
+      const fmt = n => n >= 1000 ? (n/1000).toFixed(1)+'k' : String(n);
+      document.getElementById('p-posts').textContent = ok.length;
+      document.getElementById('p-views').textContent = fmt(ok.reduce((s,l) => s+(l.views||0), 0));
+      document.getElementById('p-likes').textContent = fmt(ok.reduce((s,l) => s+(l.likes||0), 0));
+      document.getElementById('p-replies').textContent = fmt(ok.reduce((s,l) => s+(l.replies||0), 0));
+    }
+
     function buildRuns(runs) {
       const el = document.getElementById('runs');
-      if (!runs.length) { el.innerHTML = '<div class="empty">tiada run lagi.</div>'; return; }
-      el.innerHTML = '';
-      runs.slice(0, 10).forEach(r => {
+      if (!runs.length) { el.innerHTML = '<span style="color:#484f58">tiada run lagi.</span>'; return; }
+      const triggerMap = { schedule: 'schedule', workflow_dispatch: 'cron-job.org', push: 'push' };
+      el.innerHTML = runs.slice(0, 12).map(r => {
         const created = new Date(r.created_at);
-        const updated = new Date(r.updated_at);
-        const dur = r.status === 'completed' ? Math.round((updated - created) / 1000) : null;
-        const timeStr = created.toLocaleString('ms-MY', { timeZone: 'Asia/Kuala_Lumpur', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
-
-        const isOk = r.conclusion === 'success';
+        const dur = r.status === 'completed' ? Math.round((new Date(r.updated_at) - created) / 1000) : null;
+        const ts = created.toLocaleString('en-GB', { timeZone: 'Asia/Kuala_Lumpur', day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit' }).replace(',','');
         const isRunning = r.status !== 'completed';
-        const cls = isRunning ? 'running' : (isOk ? 'ok' : 'fail');
-        const badge = isRunning ? 'b-next' : (isOk ? 'b-done' : 'b-fail');
-        const label = isRunning ? 'Running...' : (isOk ? 'Berjaya' : 'Gagal');
-
-        const triggerMap = { schedule: 'GitHub Schedule', workflow_dispatch: 'cron-job.org / Manual', push: 'Push' };
-        const triggerLabel = triggerMap[r.event] || r.event;
-
-        el.innerHTML += `
-          <div class="run-card ${cls}">
-            <div class="run-left">
-              <div class="run-title">${r.display_title || r.name}</div>
-              <div class="run-meta">${timeStr} · <span class="badge ${badge}" style="font-size:10px">${label}</span></div>
-              <div class="run-trigger">trigger: ${triggerLabel}</div>
-            </div>
-            <div class="run-duration">${dur !== null ? dur + 's' : '⏳'}</div>
-          </div>`;
-      });
+        const isOk = r.conclusion === 'success';
+        const icon = isRunning ? `<span class="spin">⟳</span>` : (isOk ? `<span class="ok">✓</span>` : `<span class="fail">✗</span>`);
+        const durStr = dur !== null ? `<span class="dur">${dur}s</span>` : `<span class="spin">...</span>`;
+        const trg = triggerMap[r.event] || r.event;
+        return `<div class="tline">${icon} <span class="ts">${ts}</span> ${durStr} <span class="trg">${trg}</span></div>`;
+      }).join('');
     }
 
     updateCountdown();
@@ -263,7 +282,7 @@
 
     fetch('log.json?t=' + Date.now())
       .then(r => r.json())
-      .then(data => { buildSchedule(data); buildLog(data); })
+      .then(data => { buildSchedule(data); buildLog(data); buildPerf(data); })
       .catch(() => { buildSchedule([]); document.getElementById('log').innerHTML = '<div class="empty">belum ada post lagi.</div>'; });
   </script>
 </body>
