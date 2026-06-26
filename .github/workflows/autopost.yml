@@ -8,6 +8,9 @@ on:
     - cron: '0 13 * * *'  # 9pm Malaysia
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   post:
     runs-on: ubuntu-latest
@@ -24,11 +27,11 @@ jobs:
 
       - name: Determine slot and run
         env:
-          TZ: Asia/Kuala_Lumpur
           THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
           THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
         run: |
           HOUR=$(TZ=Asia/Kuala_Lumpur date +%H)
+          echo "Malaysia time hour: $HOUR"
           if [ "$HOUR" = "08" ]; then
             python post_today.py pagi
           elif [ "$HOUR" = "12" ]; then
@@ -37,4 +40,15 @@ jobs:
             python post_today.py tengahari
           elif [ "$HOUR" = "21" ]; then
             python post_today.py malam
+          else
+            echo "Manual trigger — running tengahari"
+            python post_today.py tengahari
           fi
+
+      - name: Commit log
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add log.json
+          git diff --staged --quiet || git commit -m "log: update post history"
+          git push

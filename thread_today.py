@@ -95,8 +95,10 @@ def post_thread():
     main_id = r2.json().get("id")
     if not main_id:
         print(f"Gagal publish hook: {r2.json()}")
+        save_log(hook, "thread", today, "fail")
         return
     print(f"[{datetime.now()}] Hook posted: {main_id}")
+    save_log(hook, "thread", today, "ok")
 
     # post replies satu persatu ikut turutan
     for i, reply_text in enumerate(replies):
@@ -117,5 +119,25 @@ def post_thread():
             "access_token": ACCESS_TOKEN
         })
         print(f"Reply {i+1} posted: {r4.json().get('id')}")
+
+def save_log(text, slot, day, status):
+    import json
+    log_file = "log.json"
+    logs = []
+    if os.path.exists(log_file):
+        with open(log_file) as f:
+            try:
+                logs = json.load(f)
+            except:
+                logs = []
+    logs.append({
+        "time": datetime.utcnow().isoformat(),
+        "day": day,
+        "slot": slot,
+        "text": text,
+        "status": status
+    })
+    with open(log_file, "w") as f:
+        json.dump(logs, f, ensure_ascii=False, indent=2)
 
 post_thread()

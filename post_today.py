@@ -86,7 +86,27 @@ POSTS = {
     },
 }
 
-def post(text):
+def save_log(text, slot, day, status):
+    import json
+    log_file = "log.json"
+    logs = []
+    if os.path.exists(log_file):
+        with open(log_file) as f:
+            try:
+                logs = json.load(f)
+            except:
+                logs = []
+    logs.append({
+        "time": datetime.utcnow().isoformat(),
+        "day": day,
+        "slot": slot,
+        "text": text,
+        "status": status
+    })
+    with open(log_file, "w") as f:
+        json.dump(logs, f, ensure_ascii=False, indent=2)
+
+def post(text, slot, day):
     r = requests.post(f"https://graph.threads.net/v1.0/{USER_ID}/threads", data={
         "media_type": "TEXT",
         "text": text,
@@ -95,6 +115,7 @@ def post(text):
     cid = r.json().get("id")
     if not cid:
         print(f"Gagal create: {r.json()}")
+        save_log(text, slot, day, "fail")
         return
     time.sleep(5)
     r2 = requests.post(f"https://graph.threads.net/v1.0/{USER_ID}/threads_publish", data={
@@ -102,9 +123,11 @@ def post(text):
         "access_token": ACCESS_TOKEN
     })
     if "id" in r2.json():
-        print(f"[{datetime.now()}] Berjaya post.")
+        print(f"[{datetime.now()}] Berjaya post — {day} {slot}")
+        save_log(text, slot, day, "ok")
     else:
         print(f"Gagal publish: {r2.json()}")
+        save_log(text, slot, day, "fail")
 
 today = datetime.now().strftime("%A")
 slot = sys.argv[1] if len(sys.argv) > 1 else None
@@ -116,4 +139,4 @@ elif today not in POSTS:
 elif slot not in POSTS[today]:
     print(f"Slot '{slot}' tidak wujud.")
 else:
-    post(POSTS[today][slot])
+    post(POSTS[today][slot], slot, today)
