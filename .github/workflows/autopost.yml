@@ -7,6 +7,11 @@ on:
     - cron: '0 5 * * *'   # 1pm Malaysia
     - cron: '0 13 * * *'  # 9pm Malaysia
   workflow_dispatch:
+    inputs:
+      force_slot:
+        description: 'Force slot (pagi/thread/tengahari/malam). Kosong = auto detect by hour.'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -30,18 +35,22 @@ jobs:
           THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
           THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
         run: |
+          FORCE="${{ github.event.inputs.force_slot }}"
           HOUR=$(TZ=Asia/Kuala_Lumpur date +%H)
-          echo "Malaysia time hour: $HOUR"
-          if [ "$HOUR" = "08" ]; then
-            python post_today.py pagi
-          elif [ "$HOUR" = "12" ]; then
+          SLOT="${FORCE:-}"
+          if [ -z "$SLOT" ]; then
+            if [ "$HOUR" = "08" ]; then SLOT="pagi"
+            elif [ "$HOUR" = "12" ]; then SLOT="thread"
+            elif [ "$HOUR" = "13" ]; then SLOT="tengahari"
+            elif [ "$HOUR" = "21" ]; then SLOT="malam"
+            else echo "Tiada slot untuk jam $HOUR MYT — skip."; exit 0
+            fi
+          fi
+          echo "Running slot: $SLOT"
+          if [ "$SLOT" = "thread" ]; then
             python thread_today.py
-          elif [ "$HOUR" = "13" ]; then
-            python post_today.py tengahari
-          elif [ "$HOUR" = "21" ]; then
-            python post_today.py malam
           else
-            echo "Tiada slot untuk jam $HOUR MYT — skip."
+            python post_today.py $SLOT
           fi
 
       - name: Fetch insights
