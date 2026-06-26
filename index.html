@@ -90,7 +90,10 @@
     <span id="token-ok" style="display:none;color:#3fb950">✓ Token dah set</span>
   </div>
 
-  <div class="section-title">Jadual Hari Ini</div>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;margin-top:28px">
+    <div class="section-title" style="margin:0">Jadual Hari Ini</div>
+    <button id="toggle-upcoming" onclick="toggleUpcoming()" style="background:none;border:1px solid #30363d;color:#8b949e;border-radius:6px;padding:3px 10px;font-size:11px;cursor:pointer">Sembunyikan akan datang</button>
+  </div>
   <div class="schedule-grid" id="schedule-grid"></div>
 
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
@@ -219,8 +222,9 @@
           : (POSTS[dayName]?.[s.key] || '—');
 
         const showPush = logStatus !== 'ok';
+        const isUpcoming = badgeText === 'Akan datang';
         grid.innerHTML += `
-          <div class="${cls}">
+          <div class="${cls}" data-upcoming="${isUpcoming}">
             <div class="slot-top">
               <span class="slot-name">${s.label}</span>
               <span class="badge ${badgeClass}">${badgeText}</span>
@@ -340,6 +344,15 @@
         btn.textContent = '✗ Gagal';
         btn.disabled = false;
       }
+    }
+
+    let upcomingHidden = false;
+    function toggleUpcoming() {
+      upcomingHidden = !upcomingHidden;
+      document.querySelectorAll('[data-upcoming="true"]').forEach(el => {
+        el.style.display = upcomingHidden ? 'none' : '';
+      });
+      document.getElementById('toggle-upcoming').textContent = upcomingHidden ? 'Tunjuk semua' : 'Sembunyikan akan datang';
     }
 
     checkTokenBar();
