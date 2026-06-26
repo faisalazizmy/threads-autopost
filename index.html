@@ -26,7 +26,8 @@
     .slot-card.failed { border-color: #da3633; }
     .slot-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
     .slot-name { font-size: 13px; font-weight: 600; }
-    .slot-time-label { font-size: 11px; color: #8b949e; margin-bottom: 6px; }
+    .slot-time-label { font-size: 11px; color: #8b949e; margin-bottom: 4px; }
+    .slot-script { font-size: 10px; color: #484f58; font-family: monospace; margin-bottom: 4px; }
     .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
     .b-done { background: #1a3a2a; color: #3fb950; }
     .b-next { background: #0d1f3c; color: #58a6ff; }
@@ -84,10 +85,10 @@
     };
 
     const SLOTS = [
-      { key: 'pagi',      label: 'Pagi',      hour: 8  },
-      { key: 'thread',    label: 'Thread',    hour: 12 },
-      { key: 'tengahari', label: 'Tengahari', hour: 13 },
-      { key: 'malam',     label: 'Malam',     hour: 21 },
+      { key: 'pagi',      label: 'Pagi',      hour: 8,  script: 'post_today.py pagi' },
+      { key: 'thread',    label: 'Thread',    hour: 12, script: 'thread_today.py' },
+      { key: 'tengahari', label: 'Tengahari', hour: 13, script: 'post_today.py tengahari' },
+      { key: 'malam',     label: 'Malam',     hour: 21, script: 'post_today.py malam' },
     ];
 
     const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -170,6 +171,7 @@
               <span class="badge ${badgeClass}">${badgeText}</span>
             </div>
             <div class="slot-time-label">${s.hour}:00</div>
+            <div class="slot-script">${s.script}</div>
             <div class="slot-preview">${preview}</div>
           </div>`;
       });
