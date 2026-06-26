@@ -73,11 +73,17 @@ def fetch_insights(logs):
 
         for item in data:
             name = item.get("name")
-            value = item.get("total_value", {}).get("value", 0)
+            # Threads API returns either total_value or values[] format
+            if "total_value" in item:
+                value = item["total_value"].get("value", 0)
+            elif "values" in item and item["values"]:
+                value = item["values"][0].get("value", 0)
+            else:
+                value = 0
             if name:
                 entry[name] = value
         updated = True
-        stats = ", ".join(f"{i['name']}={i.get('total_value',{}).get('value',0)}" for i in data)
+        stats = ", ".join(f"{i['name']}={i.get('total_value', {}).get('value') or (i.get('values') or [{}])[0].get('value', 0)}" for i in data)
         print(f"Insights {post_id}: {stats}")
 
     return updated
