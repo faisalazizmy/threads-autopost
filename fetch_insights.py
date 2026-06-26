@@ -52,6 +52,13 @@ def backfill_post_ids(logs):
 
     return updated
 
+def parse_metric(item):
+    if "total_value" in item:
+        return item["total_value"].get("value", 0)
+    elif "values" in item and item["values"]:
+        return item["values"][0].get("value", 0)
+    return 0
+
 def fetch_insights(logs):
     updated = False
     for entry in logs:
@@ -59,32 +66,29 @@ def fetch_insights(logs):
         if not post_id or entry.get("status") != "ok":
             continue
 
+        # insights endpoint — views, reposts, quotes
         r = requests.get(
             f"https://graph.threads.net/v1.0/{post_id}/insights",
-            params={
-                "metric": "views,likes,replies,reposts,quotes",
-                "access_token": ACCESS_TOKEN
-            }
+            params={"metric": "views,reposts,quotes", "access_token": ACCESS_TOKEN}
         )
-        data = r.json().get("data", [])
-        if not data:
-            print(f"Tiada insights untuk {post_id}: {r.json()}")
-            continue
-
-        for item in data:
+        for item in r.json().get("data", []):
             name = item.get("name")
-            # Threads API returns either total_value or values[] format
-            if "total_value" in item:
-                value = item["total_value"].get("value", 0)
-            elif "values" in item and item["values"]:
-                value = item["values"][0].get("value", 0)
-            else:
-                value = 0
             if name:
-                entry[name] = value
+                entry[name] = parse_metric(item)
+
+        # media fields — likes dan replies ada direct field
+        r2 = requests.get(
+            f"https://graph.threads.net/v1.0/{post_id}",
+            params={"fields": "like_count,replies_count", "access_token": ACCESS_TOKEN}
+        )
+        media = r2.json()
+        if "like_count" in media:
+            entry["likes"] = media["like_count"]
+        if "replies_count" in media:
+            entry["replies"] = media["replies_count"]
+
         updated = True
-        stats = ", ".join(f"{i['name']}={i.get('total_value', {}).get('value') or (i.get('values') or [{}])[0].get('value', 0)}" for i in data)
-        print(f"Insights {post_id}: {stats}")
+        print(f"{post_id}: views={entry.get('views',0)} likes={entry.get('likes',0)} replies={entry.get('replies',0)} reposts={entry.get('reposts',0)}")
 
     return updated
 
