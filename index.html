@@ -80,7 +80,10 @@
   <div class="section-title">Jadual Hari Ini</div>
   <div class="schedule-grid" id="schedule-grid"></div>
 
-  <div class="section-title">Performance</div>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+    <div class="section-title" style="margin-bottom:0">Performance</div>
+    <button id="refresh-btn" onclick="refreshLog()" style="background:none;border:1px solid #30363d;color:#8b949e;border-radius:6px;padding:3px 10px;font-size:11px;cursor:pointer">↻ Refresh</button>
+  </div>
   <div class="perf-grid" id="perf-grid">
     <div class="perf-card"><div class="perf-val" id="p-posts">—</div><div class="perf-label">Posts</div></div>
     <div class="perf-card"><div class="perf-val" id="p-views">—</div><div class="perf-label">Views</div></div>
@@ -293,10 +296,17 @@
         .catch(e => { document.getElementById('runs').innerHTML = `<span style="color:#f85149">fetch error: ${e.message}</span>`; });
     }
 
-    fetch('log.json?t=' + Date.now())
-      .then(r => r.json())
-      .then(data => { buildSchedule(data); buildLog(data); buildPerf(data); })
-      .catch(() => { buildSchedule([]); document.getElementById('log').innerHTML = '<div class="empty">belum ada post lagi.</div>'; });
+    function refreshLog() {
+      const btn = document.getElementById('refresh-btn');
+      btn.textContent = '↻ ...';
+      btn.disabled = true;
+      fetch('log.json?t=' + Date.now())
+        .then(r => r.json())
+        .then(data => { buildSchedule(data); buildLog(data); buildPerf(data); btn.textContent = '↻ Refresh'; btn.disabled = false; })
+        .catch(() => { btn.textContent = '↻ Refresh'; btn.disabled = false; });
+    }
+
+    refreshLog();
   </script>
 </body>
 </html>
