@@ -65,7 +65,7 @@ POSTS = {
 
     "Saturday": {
         # angle: dua-dua — soalan hot buat orang nak share opinion
-        "pagi": "setuju tak, ramai Malaysian ada skill tapi takut nak promote diri sendiri. apa yang buat korang rasa macam tu?",
+        "pagi": "setuju tak, ramai Malaysian ada skill tapi takut nak tonjolkan diri. apa yang buat korang rasa macam tu?",
 
         # angle: zero dari awal — validate perasaan lepas tu flip
         "tengahari": "rasa macam semua orang dah jauh depan tu normal. diorang dah ada client, dah ada income. padahal 6 bulan lepas diorang pun duduk tempat yang sama dengan kau sekarang. bezanya diorang tak berhenti kat rasa tu.",
