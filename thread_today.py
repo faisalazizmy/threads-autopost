@@ -102,7 +102,7 @@ def post_thread():
 
     # post replies satu persatu ikut turutan
     for i, reply_text in enumerate(replies):
-        time.sleep(10)
+        time.sleep(15)
         r3 = requests.post(f"https://graph.threads.net/v1.0/{USER_ID}/threads", data={
             "media_type": "TEXT",
             "text": reply_text,
@@ -113,12 +113,13 @@ def post_thread():
         if not rcid:
             print(f"Gagal reply {i+1}: {r3.json()}")
             continue
-        time.sleep(8)
+        time.sleep(15)
         r4 = requests.post(f"https://graph.threads.net/v1.0/{USER_ID}/threads_publish", data={
             "creation_id": rcid,
             "access_token": ACCESS_TOKEN
         })
         print(f"Reply {i+1} posted: {r4.json().get('id')}")
+        time.sleep(10)
 
 def save_log(text, slot, day, status):
     import json
