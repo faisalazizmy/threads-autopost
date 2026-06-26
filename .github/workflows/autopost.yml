@@ -25,6 +25,8 @@ jobs:
       - name: Determine slot and run
         env:
           TZ: Asia/Kuala_Lumpur
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
         run: |
           HOUR=$(TZ=Asia/Kuala_Lumpur date +%H)
           if [ "$HOUR" = "08" ]; then
