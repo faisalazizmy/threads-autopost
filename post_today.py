@@ -86,7 +86,7 @@ POSTS = {
     },
 }
 
-def save_log(text, slot, day, status):
+def save_log(text, slot, day, status, post_id=None):
     import json
     log_file = "log.json"
     logs = []
@@ -96,13 +96,16 @@ def save_log(text, slot, day, status):
                 logs = json.load(f)
             except:
                 logs = []
-    logs.append({
+    entry = {
         "time": datetime.utcnow().isoformat(),
         "day": day,
         "slot": slot,
         "text": text,
         "status": status
-    })
+    }
+    if post_id:
+        entry["post_id"] = post_id
+    logs.append(entry)
     with open(log_file, "w") as f:
         json.dump(logs, f, ensure_ascii=False, indent=2)
 
@@ -122,9 +125,10 @@ def post(text, slot, day):
         "creation_id": cid,
         "access_token": ACCESS_TOKEN
     })
-    if "id" in r2.json():
+    post_id = r2.json().get("id")
+    if post_id:
         print(f"[{datetime.now()}] Berjaya post — {day} {slot}")
-        save_log(text, slot, day, "ok")
+        save_log(text, slot, day, "ok", post_id)
     else:
         print(f"Gagal publish: {r2.json()}")
         save_log(text, slot, day, "fail")

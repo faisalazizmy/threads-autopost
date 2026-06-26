@@ -41,6 +41,8 @@
     .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
     .card-text { font-size: 14px; line-height: 1.6; color: #c9d1d9; }
     .card-time { font-size: 11px; color: #8b949e; margin-top: 8px; }
+    .card-stats { display: flex; gap: 14px; margin-top: 8px; font-size: 12px; color: #8b949e; }
+    .stat { display: flex; align-items: center; gap: 4px; }
     .empty { text-align: center; color: #8b949e; padding: 40px 0; font-size: 14px; }
 
     .run-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 14px 18px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
@@ -207,6 +209,14 @@
               <span class="badge ${isOk ? 'b-done' : 'b-fail'}">${isOk ? 'Berjaya' : 'Gagal'}</span>
             </div>
             <div class="card-text">${p.text}</div>
+            ${p.views !== undefined ? `
+            <div class="card-stats">
+              <span class="stat">👁 ${p.views ?? 0}</span>
+              <span class="stat">❤️ ${p.likes ?? 0}</span>
+              <span class="stat">💬 ${p.replies ?? 0}</span>
+              <span class="stat">🔁 ${p.reposts ?? 0}</span>
+              <span class="stat">❝ ${p.quotes ?? 0}</span>
+            </div>` : '<div class="card-stats" style="color:#484f58;font-size:11px">stats belum ada</div>'}
             <div class="card-time">${timeStr}</div>
           </div>`;
       });

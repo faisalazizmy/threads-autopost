@@ -98,7 +98,7 @@ def post_thread():
         save_log(hook, "thread", today, "fail")
         return
     print(f"[{datetime.now()}] Hook posted: {main_id}")
-    save_log(hook, "thread", today, "ok")
+    save_log(hook, "thread", today, "ok", main_id)
 
     # post replies satu persatu ikut turutan
     for i, reply_text in enumerate(replies):
@@ -121,7 +121,7 @@ def post_thread():
         print(f"Reply {i+1} posted: {r4.json().get('id')}")
         time.sleep(10)
 
-def save_log(text, slot, day, status):
+def save_log(text, slot, day, status, post_id=None):
     import json
     log_file = "log.json"
     logs = []
@@ -131,13 +131,16 @@ def save_log(text, slot, day, status):
                 logs = json.load(f)
             except:
                 logs = []
-    logs.append({
+    entry = {
         "time": datetime.utcnow().isoformat(),
         "day": day,
         "slot": slot,
         "text": text,
         "status": status
-    })
+    }
+    if post_id:
+        entry["post_id"] = post_id
+    logs.append(entry)
     with open(log_file, "w") as f:
         json.dump(logs, f, ensure_ascii=False, indent=2)
 
