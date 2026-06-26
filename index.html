@@ -19,21 +19,23 @@
 
     .section-title { font-size: 12px; color: #8b949e; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 12px; margin-top: 28px; }
 
-    .schedule-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .slot-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 14px 16px; }
-    .slot-card.done { border-color: #238636; }
-    .slot-card.next { border-color: #58a6ff; background: #0c1829; }
-    .slot-card.failed { border-color: #da3633; }
-    .slot-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
-    .slot-name { font-size: 13px; font-weight: 600; }
-    .slot-time-label { font-size: 11px; color: #8b949e; margin-bottom: 4px; }
-    .slot-script { font-size: 10px; color: #484f58; font-family: monospace; margin-bottom: 4px; }
     .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
     .b-done { background: #1a3a2a; color: #3fb950; }
     .b-next { background: #0d1f3c; color: #58a6ff; }
     .b-upcoming { background: #21262d; color: #8b949e; }
     .b-fail { background: #3a1a1a; color: #f85149; }
-    .slot-preview { font-size: 12px; color: #8b949e; line-height: 1.5; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+
+    /* Calendar list */
+    .cal-day { margin-bottom: 18px; }
+    .cal-day-header { font-size: 12px; font-weight: 600; color: #e6edf3; padding: 6px 0 8px; border-bottom: 1px solid #21262d; margin-bottom: 6px; display: flex; justify-content: space-between; }
+    .cal-day-header.today-header { color: #58a6ff; }
+    .cal-row { display: flex; align-items: flex-start; gap: 12px; padding: 7px 0; border-bottom: 1px solid #161b22; }
+    .cal-time { font-size: 11px; color: #484f58; width: 36px; flex-shrink: 0; padding-top: 2px; font-family: monospace; }
+    .cal-label { font-size: 11px; color: #6e7681; width: 60px; flex-shrink: 0; padding-top: 2px; }
+    .cal-text { font-size: 13px; color: #c9d1d9; line-height: 1.5; flex: 1; }
+    .cal-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
+    .cal-row.is-done .cal-text { color: #8b949e; }
+    .cal-row.is-next .cal-text { color: #e6edf3; }
 
     .card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
     .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
@@ -90,11 +92,8 @@
     <span id="token-ok" style="display:none;color:#3fb950">✓ Token dah set</span>
   </div>
 
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;margin-top:28px">
-    <div class="section-title" style="margin:0">Jadual Hari Ini</div>
-    <button id="toggle-upcoming" onclick="toggleUpcoming()" style="background:none;border:1px solid #30363d;color:#8b949e;border-radius:6px;padding:3px 10px;font-size:11px;cursor:pointer">Sembunyikan akan datang</button>
-  </div>
-  <div class="schedule-grid" id="schedule-grid"></div>
+  <div class="section-title">Jadual Minggu Ini</div>
+  <div id="schedule-cal"></div>
 
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
     <div class="section-title" style="margin-bottom:0">Performance</div>
@@ -188,53 +187,74 @@
 
     function buildSchedule(logs) {
       const now = getMYTime();
-      const hour = now.getHours();
-      const dayName = DAYS[now.getDay()];
-      const grid = document.getElementById('schedule-grid');
       const { slot: nextSlot } = getNextSlot();
+      const cal = document.getElementById('schedule-cal');
 
-      const loggedToday = {};
+      // Build logged map: { "Friday|pagi": "ok", ... }
+      const loggedMap = {};
       logs.forEach(l => {
-        const d = new Date(l.time + (l.time.includes('Z') ? '' : 'Z'));
-        const lDay = DAYS[d.getDay()];
-        const nowDate = getMYTime();
-        const lMY = new Date(d.toLocaleString('en-US', { timeZone: 'Asia/Kuala_Lumpur' }));
-        if (lMY.toDateString() === nowDate.toDateString()) {
-          loggedToday[l.slot] = l.status;
-        }
+        const lMY = new Date(new Date(l.time + (l.time.includes('Z') ? '' : 'Z')).toLocaleString('en-US', { timeZone: 'Asia/Kuala_Lumpur' }));
+        loggedMap[`${DAYS[lMY.getDay()]}|${l.slot}`] = l.status;
       });
 
-      grid.innerHTML = '';
-      SLOTS.forEach(s => {
-        const isNext = s.key === nextSlot.key;
-        const logStatus = loggedToday[s.key];
-        const isPast = hour > s.hour || (hour === s.hour && now.getMinutes() > 10);
+      cal.innerHTML = '';
+      // Show today + next 6 days
+      for (let d = 0; d < 7; d++) {
+        const date = new Date(now);
+        date.setDate(date.getDate() + d);
+        const dayName = DAYS[date.getDay()];
+        const isToday = d === 0;
+        const dateLabel = date.toLocaleDateString('ms-MY', { weekday: 'long', day: 'numeric', month: 'long' });
 
-        let cls = 'slot-card';
-        let badgeClass = 'b-upcoming', badgeText = 'Akan datang';
+        let rowsHtml = '';
+        SLOTS.forEach(s => {
+          const key = `${dayName}|${s.key}`;
+          const logStatus = loggedMap[key];
+          const isNext = isToday && s.key === nextSlot.key;
+          const nowHour = now.getHours();
+          const isPast = isToday && (nowHour > s.hour || (nowHour === s.hour && now.getMinutes() > 5));
 
-        if (logStatus === 'ok')   { cls += ' done';   badgeClass = 'b-done';     badgeText = 'Berjaya'; }
-        else if (logStatus === 'fail') { cls += ' failed'; badgeClass = 'b-fail'; badgeText = 'Gagal'; }
-        else if (isNext)          { cls += ' next';   badgeClass = 'b-next';     badgeText = 'Seterusnya'; }
+          const preview = s.key === 'thread'
+            ? (THREADS[dayName] || '—')
+            : (POSTS[dayName]?.[s.key] || '—');
 
-        const preview = s.key === 'thread'
-          ? (THREADS[dayName] || '—')
-          : (POSTS[dayName]?.[s.key] || '—');
+          let rowCls = 'cal-row';
+          let badge = '';
+          let pushBtn = '';
 
-        const showPush = logStatus !== 'ok';
-        const isUpcoming = badgeText === 'Akan datang';
-        grid.innerHTML += `
-          <div class="${cls}" data-upcoming="${isUpcoming}">
-            <div class="slot-top">
-              <span class="slot-name">${s.label}</span>
-              <span class="badge ${badgeClass}">${badgeText}</span>
+          if (logStatus === 'ok') {
+            rowCls += ' is-done';
+            badge = `<span class="badge b-done">✓</span>`;
+          } else if (logStatus === 'fail') {
+            badge = `<span class="badge b-fail">Gagal</span>`;
+            if (isToday) pushBtn = `<button class="push-btn" id="pushbtn-${s.key}" onclick="triggerSlot('${s.key}')" style="margin-top:4px">▶ Retry</button>`;
+          } else if (isNext) {
+            rowCls += ' is-next';
+            badge = `<span class="badge b-next">Seterusnya</span>`;
+            pushBtn = `<button class="push-btn" id="pushbtn-${s.key}" onclick="triggerSlot('${s.key}')" style="margin-top:4px">▶ Post sekarang</button>`;
+          } else if (isToday && isPast) {
+            badge = `<span class="badge b-fail">Terlepas</span>`;
+            pushBtn = `<button class="push-btn" id="pushbtn-${s.key}" onclick="triggerSlot('${s.key}')" style="margin-top:4px">▶ Post sekarang</button>`;
+          }
+
+          rowsHtml += `
+            <div class="${rowCls}">
+              <div class="cal-time">${String(s.hour).padStart(2,'0')}:00</div>
+              <div class="cal-label">${s.label}</div>
+              <div class="cal-text">${preview}</div>
+              <div class="cal-right">${badge}${pushBtn}</div>
+            </div>`;
+        });
+
+        cal.innerHTML += `
+          <div class="cal-day">
+            <div class="cal-day-header ${isToday ? 'today-header' : ''}">
+              <span>${dateLabel}</span>
+              ${isToday ? '<span style="font-size:11px;opacity:.6">Hari ini</span>' : ''}
             </div>
-            <div class="slot-time-label">${s.hour}:00</div>
-            <div class="slot-script">${s.script}</div>
-            <div class="slot-preview">${preview}</div>
-            ${showPush ? `<button class="push-btn" id="pushbtn-${s.key}" onclick="triggerSlot('${s.key}')">▶ Post sekarang</button>` : ''}
+            ${rowsHtml}
           </div>`;
-      });
+      }
     }
 
     function buildLog(logs) {
@@ -344,15 +364,6 @@
         btn.textContent = '✗ Gagal';
         btn.disabled = false;
       }
-    }
-
-    let upcomingHidden = false;
-    function toggleUpcoming() {
-      upcomingHidden = !upcomingHidden;
-      document.querySelectorAll('[data-upcoming="true"]').forEach(el => {
-        el.style.display = upcomingHidden ? 'none' : '';
-      });
-      document.getElementById('toggle-upcoming').textContent = upcomingHidden ? 'Tunjuk semua' : 'Sembunyikan akan datang';
     }
 
     checkTokenBar();
