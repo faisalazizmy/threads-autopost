@@ -120,24 +120,6 @@ def post_thread():
         print(f"Reply {i+1} posted: {r4.json().get('id')}")
         time.sleep(10)
 
-def already_posted_thread(day):
-    import json
-    log_file = "log.json"
-    if not os.path.exists(log_file):
-        return False
-    with open(log_file) as f:
-        try:
-            logs = json.load(f)
-        except:
-            return False
-    return any(l.get("slot") == "thread" and l.get("day") == day and l.get("status") == "ok" for l in logs)
-
-today_check = datetime.now().strftime("%A")
-if already_posted_thread(today_check):
-    print(f"Thread untuk {today_check} dah dipost hari ni — skip.")
-else:
-    post_thread()
-
 def save_log(text, slot, day, status, post_id=None):
     import json
     log_file = "log.json"
@@ -161,4 +143,20 @@ def save_log(text, slot, day, status, post_id=None):
     with open(log_file, "w") as f:
         json.dump(logs, f, ensure_ascii=False, indent=2)
 
-post_thread()
+def already_posted_thread(day):
+    import json
+    log_file = "log.json"
+    if not os.path.exists(log_file):
+        return False
+    with open(log_file) as f:
+        try:
+            logs = json.load(f)
+        except:
+            return False
+    return any(l.get("slot") == "thread" and l.get("day") == day and l.get("status") == "ok" for l in logs)
+
+today_check = datetime.now().strftime("%A")
+if already_posted_thread(today_check):
+    print(f"Thread untuk {today_check} dah dipost hari ni — skip.")
+else:
+    post_thread()
