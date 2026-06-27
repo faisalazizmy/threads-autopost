@@ -222,19 +222,22 @@
           let badge = '';
           let pushBtn = '';
 
+          const btnId = `pushbtn-${d}-${s.key}`;
           if (logStatus === 'ok') {
             rowCls += ' is-done';
             badge = `<span class="badge b-done">✓</span>`;
           } else if (logStatus === 'fail') {
             badge = `<span class="badge b-fail">Gagal</span>`;
-            if (isToday) pushBtn = `<button class="push-btn" id="pushbtn-${s.key}" onclick="triggerSlot('${s.key}')" style="margin-top:4px">▶ Retry</button>`;
+            pushBtn = `<button class="push-btn" id="${btnId}" onclick="triggerSlot('${s.key}','${btnId}')">▶ Retry</button>`;
           } else if (isNext) {
             rowCls += ' is-next';
             badge = `<span class="badge b-next">Seterusnya</span>`;
-            pushBtn = `<button class="push-btn" id="pushbtn-${s.key}" onclick="triggerSlot('${s.key}')" style="margin-top:4px">▶ Post sekarang</button>`;
+            pushBtn = `<button class="push-btn" id="${btnId}" onclick="triggerSlot('${s.key}','${btnId}')">▶ Post sekarang</button>`;
           } else if (isToday && isPast) {
             badge = `<span class="badge b-fail">Terlepas</span>`;
-            pushBtn = `<button class="push-btn" id="pushbtn-${s.key}" onclick="triggerSlot('${s.key}')" style="margin-top:4px">▶ Post sekarang</button>`;
+            pushBtn = `<button class="push-btn" id="${btnId}" onclick="triggerSlot('${s.key}','${btnId}')">▶ Post sekarang</button>`;
+          } else {
+            pushBtn = `<button class="push-btn" id="${btnId}" onclick="triggerSlot('${s.key}','${btnId}')">▶ Post sekarang</button>`;
           }
 
           rowsHtml += `
@@ -331,10 +334,10 @@
       }
     }
 
-    async function triggerSlot(slot) {
+    async function triggerSlot(slot, btnId) {
       const token = getToken();
       if (!token) { setToken(); return; }
-      const btn = document.getElementById('pushbtn-' + slot);
+      const btn = document.getElementById(btnId || 'pushbtn-0-' + slot);
       if (!btn) return;
       btn.disabled = true;
       btn.className = 'push-btn pushing';
