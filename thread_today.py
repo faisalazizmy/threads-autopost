@@ -67,7 +67,7 @@ THREADS = {
     },
 }
 
-def def already_posted_thread(day):
+def already_posted_thread(day):
     import json
     log_file = "log.json"
     if not os.path.exists(log_file):
@@ -83,11 +83,7 @@ today_check = datetime.now().strftime("%A")
 if already_posted_thread(today_check):
     print(f"Thread untuk {today_check} dah dipost hari ni — skip.")
 else:
-    post_thread():
-    today = datetime.now().strftime("%A")
-    if today not in THREADS:
-        print(f"Tiada thread untuk {today}")
-        return
+    post_thread()
 
     thread = THREADS[today]
     hook = thread["hook"]
