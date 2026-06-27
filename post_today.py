@@ -10,7 +10,7 @@ USER_ID = os.environ.get("THREADS_USER_ID", "36445274191783117")
 POSTS = {
     "Monday": {
         # angle: zero dari awal — soalan trigger
-        "pagi": "korang pernah tak terfikir nak buat duit sendiri dari rumah tapi tak tahu nak buat apa. bukan takde idea, tapi terlalu banyak idea sampai tak buat apa-apa pun.",
+        "pagi": "cara paling cepat dapat client pertama bukan apply kat Fiverr atau Upwork. pergi group facebook dalam industri yang kau nak target. baca masalah orang, offer bantuan secara direct. client pertama selalu datang dari connection, bukan dari platform.",
 
         # angle: ada skill tapi tak tahu jual — myth bust
         "tengahari": "kau dah tahu buat benda ni. dah buat untuk diri sendiri, untuk kawan, untuk suka-suka. tapi bila ada orang tanya berapa harga, kau blank. bukan sebab tak tahu buat. sebab tak tahu macam mana nak letak nilai kat benda yang kau buat.",
@@ -21,7 +21,7 @@ POSTS = {
 
     "Tuesday": {
         # angle: zero dari awal — soalan survival
-        "pagi": "kalau kau kena cari RM500 dalam masa seminggu guna laptop je, tanpa keluar rumah, tanpa modal, kau akan buat apa?",
+        "pagi": "dua orang belajar skill yang sama. sorang simpan semua kerja dalam folder laptop. sorang lagi share kat group facebook dua kali seminggu. lepas 60 hari sorang masih tunggu client datang. sorang lagi dah dapat tiga project. bezanya bukan skill. bezanya visibility.",
 
         # angle: ada skill tapi tak tahu jual — relatable
         "tengahari": "ramai yang dah ada skill digital tapi masih apply kerja gaji RM1,500. bukan sebab skill tu tak bernilai. sebab tak tahu macam mana nak charge RM1,500 untuk satu projek je.",
@@ -32,7 +32,7 @@ POSTS = {
 
     "Wednesday": {
         # angle: dua-dua — soalan buat orang nak reply
-        "pagi": "apa yang paling buat korang rasa takut nak mula buat duit sendiri secara digital? takut tak laku, tak tahu nak start, atau benda lain?",
+        "pagi": "tiga skill digital yang paling senang dapat client pertama dalam masa 90 hari: content writing, social media management, data entry. tak perlu software mahal. tak perlu sijil. yang penting ada satu atau dua contoh kerja untuk tunjuk kepada client.",
 
         # angle: zero dari awal — myth bust
         "tengahari": "tak ada skill pun boleh mula sekarang. pilih satu benda yang kau nak belajar, luangkan 2 jam sehari, dalam 3 bulan kau dah boleh charge orang. yang penting pilih satu je dulu. jangan cuba belajar semua sekali.",
@@ -43,7 +43,7 @@ POSTS = {
 
     "Thursday": {
         # angle: ada skill tapi tak tahu jual — soalan insecurity
-        "pagi": "pernah tak rasa skill kau tu biasa je, sampai rasa tak layak charge mahal. lepas tu tengok orang lain dengan skill sama charge 3x ganda dan client pun ada.",
+        "pagi": "kalau rasa skill kau terlalu biasa untuk charge mahal, tengok dari sisi client. dia tak cari orang paling pandai. dia cari orang yang boleh selesaikan masalah dia, senang nak communicate, dan deliver on time. tiga benda tu lebih penting dari skill tahap expert.",
 
         # angle: zero dari awal — straight truth
         "tengahari": "belajar skill digital sekarang lagi senang dari 10 tahun dulu. semua ada kat YouTube, percuma. yang susahnya bukan belajar. yang susahnya nak duduk diam 2 jam sehari buat benda yang belum nampak hasilnya lagi.",
@@ -65,7 +65,7 @@ POSTS = {
 
     "Saturday": {
         # angle: dua-dua — soalan hot buat orang nak share opinion
-        "pagi": "setuju tak, ramai Malaysian ada skill tapi takut nak tonjolkan diri. apa yang buat korang rasa macam tu?",
+        "pagi": "ramai yang ada skill tapi tak dapat client sebab satu benda: diorang invisible. orang tak tahu diorang wujud. cara fix dia mudah: pilih satu platform, post satu benda seminggu pasal kerja kau, konsisten selama 8 minggu. bukan kena promote diri. cukup tunjuk proses kerja kau je. orang akan mula notice.",
 
         # angle: zero dari awal — validate perasaan lepas tu flip
         "tengahari": "rasa macam semua orang dah jauh depan tu normal. diorang dah ada client, dah ada income. padahal 6 bulan lepas diorang pun duduk tempat yang sama dengan kau sekarang. bezanya diorang tak berhenti kat rasa tu.",
@@ -76,7 +76,7 @@ POSTS = {
 
     "Sunday": {
         # angle: dua-dua — soalan ringan positif
-        "pagi": "kalau dapat RM1,000 pertama dari skill digital korang, benda pertama apa yang korang nak buat dengan duit tu?",
+        "pagi": "benda paling banyak tahan orang dari start freelance bukan skill, bukan modal, bukan masa. tapi menunggu rasa ready. yang hakikatnya, rasa ready tu tak datang sebelum kau start. dia datang lepas kau dah buat benda tu walaupun takut.",
 
         # angle: dua-dua — relatable closing
         "tengahari": "tak ada skill pun okay. ada skill tapi tak tahu jual pun okay. dua-dua boleh selesai. yang tak okay adalah bila kau dah tahu kau nak buat sesuatu tapi kau biarkan hari berlalu macam tu je.",
