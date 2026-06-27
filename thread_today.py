@@ -67,6 +67,59 @@ THREADS = {
     },
 }
 
+def post_thread():
+    today = datetime.now().strftime("%A")
+    if today not in THREADS:
+        print(f"Tiada thread untuk {today}")
+        return
+
+    thread = THREADS[today]
+    hook = thread["hook"]
+    replies = thread["replies"]
+
+    r = requests.post(f"https://graph.threads.net/v1.0/{USER_ID}/threads", data={
+        "media_type": "TEXT",
+        "text": hook,
+        "access_token": ACCESS_TOKEN
+    })
+    cid = r.json().get("id")
+    if not cid:
+        print(f"Gagal hook: {r.json()}")
+        save_log(hook, "thread", today, "fail")
+        return
+    time.sleep(8)
+    r2 = requests.post(f"https://graph.threads.net/v1.0/{USER_ID}/threads_publish", data={
+        "creation_id": cid,
+        "access_token": ACCESS_TOKEN
+    })
+    main_id = r2.json().get("id")
+    if not main_id:
+        print(f"Gagal publish hook: {r2.json()}")
+        save_log(hook, "thread", today, "fail")
+        return
+    print(f"[{datetime.now()}] Hook posted: {main_id}")
+    save_log(hook, "thread", today, "ok", main_id)
+
+    for i, reply_text in enumerate(replies):
+        time.sleep(15)
+        r3 = requests.post(f"https://graph.threads.net/v1.0/{USER_ID}/threads", data={
+            "media_type": "TEXT",
+            "text": reply_text,
+            "reply_to_id": main_id,
+            "access_token": ACCESS_TOKEN
+        })
+        rcid = r3.json().get("id")
+        if not rcid:
+            print(f"Gagal reply {i+1}: {r3.json()}")
+            continue
+        time.sleep(15)
+        r4 = requests.post(f"https://graph.threads.net/v1.0/{USER_ID}/threads_publish", data={
+            "creation_id": rcid,
+            "access_token": ACCESS_TOKEN
+        })
+        print(f"Reply {i+1} posted: {r4.json().get('id')}")
+        time.sleep(10)
+
 def already_posted_thread(day):
     import json
     log_file = "log.json"
