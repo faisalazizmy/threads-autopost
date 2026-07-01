@@ -92,7 +92,10 @@
     <span id="token-ok" style="display:none;color:#3fb950">✓ Token dah set</span>
   </div>
 
-  <div class="section-title">Jadual Minggu Ini</div>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+    <div class="section-title" style="margin-bottom:0">Jadual Minggu Ini</div>
+    <button id="sched-btn" onclick="toggleSchedule()" style="background:none;border:1px solid #30363d;color:#8b949e;border-radius:6px;padding:3px 10px;font-size:11px;cursor:pointer">⏸ Stop Schedule</button>
+  </div>
   <div id="schedule-cal"></div>
 
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
@@ -447,6 +450,51 @@
         .catch(e => { document.getElementById('runs').innerHTML = `<span style="color:#f85149">fetch error: ${e.message}</span>`; });
     }
 
+    async function toggleSchedule() {
+      const token = getToken();
+      if (!token) { setToken(); return; }
+      const btn = document.getElementById('sched-btn');
+      btn.disabled = true;
+      btn.textContent = '...';
+
+      const base = 'https://api.github.com/repos/faisalazizmy/threads-autopost/actions/workflows/autopost.yml';
+      const headers = { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github+json' };
+
+      // check current state
+      const res = await fetch(base, { headers });
+      const wf = await res.json();
+      const isActive = wf.state === 'active';
+
+      // toggle
+      await fetch(`${base}/${isActive ? 'disable' : 'enable'}`, { method: 'PUT', headers });
+
+      btn.disabled = false;
+      if (isActive) {
+        btn.textContent = '▶ Resume Schedule';
+        btn.style.color = '#f85149';
+        btn.style.borderColor = '#f85149';
+      } else {
+        btn.textContent = '⏸ Stop Schedule';
+        btn.style.color = '#8b949e';
+        btn.style.borderColor = '#30363d';
+      }
+    }
+
+    async function initSchedBtn() {
+      const token = getToken();
+      if (!token) return;
+      const btn = document.getElementById('sched-btn');
+      const res = await fetch('https://api.github.com/repos/faisalazizmy/threads-autopost/actions/workflows/autopost.yml', {
+        headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github+json' }
+      });
+      const wf = await res.json();
+      if (wf.state !== 'active') {
+        btn.textContent = '▶ Resume Schedule';
+        btn.style.color = '#f85149';
+        btn.style.borderColor = '#f85149';
+      }
+    }
+
     function refreshLog() {
       const btn = document.getElementById('refresh-btn');
       btn.textContent = '↻ ...';
@@ -458,6 +506,7 @@
     }
 
     refreshLog();
+    initSchedBtn();
   </script>
 </body>
 </html>
