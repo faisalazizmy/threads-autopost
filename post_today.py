@@ -9,80 +9,80 @@ USER_ID = os.environ.get("THREADS_USER_ID", "36445274191783117")
 
 POSTS = {
     "Monday": {
-        # angle: zero dari awal — soalan trigger
-        "pagi": "cara paling cepat dapat client pertama bukan apply kat Fiverr atau Upwork. pergi group facebook dalam industri yang kau nak target. baca masalah orang, offer bantuan secara direct. client pertama selalu datang dari connection, bukan dari platform.",
+        # cerita: first job roti dan air
+        "pagi": "upah pertama aku buat kerja freelance?\n\nroti dan air.\n\nclient pertama tu kawan aku sendiri. dia tak ada duit. aku pun tak kisah sebab aku just nak buat kerja tu.\n\ntapi dari kerja tu je aku ada portfolio pertama aku. satu contoh je. tapi cukup untuk dapat client seterusnya.\n\nkadang first job bukan pasal duit. pasal kau ada sesuatu untuk tunjuk.",
 
-        # angle: ada skill tapi tak tahu jual — myth bust
-        "tengahari": "kau dah tahu buat benda ni. dah buat untuk diri sendiri, untuk kawan, untuk suka-suka. tapi bila ada orang tanya berapa harga, kau blank. bukan sebab tak tahu buat. sebab tak tahu macam mana nak letak nilai kat benda yang kau buat.",
+        # cerita: buat personal project walaupun takde client
+        "tengahari": "aku selalu buat project walaupun takde siapa bayar.\n\nsempena raya buat design sendiri. jumpa tools baru terus explore suka-suka. buat benda yang takde orang minta.\n\norang kata buang masa. tapi bila tiba masa nak tunjuk portfolio, aku ada benda nak tunjuk.\n\nkalau tunggu ada client dulu baru nak practice, kau akan tunggu lama.",
 
-        # angle: dua-dua — actionable
-        "malam": "tak kisah kau ada skill ke tak lagi, langkah pertama sama je. kena tahu dulu kau nak bantu siapa dan masalah apa yang kau boleh selesaikan. tanpa tu, semua benda lain jadi hentam keromo.",
+        # cerita: mula suka-suka, bukan target fulltime pun
+        "malam": "aku tak start freelance dengan target nak buat fulltime pun dulu.\n\njust nak buat duit lebih. buat bila ada masa lapang. tak ada tekanan.\n\ntapi bila buat dengan enjoy, kerja jadi lagi baik. client happy, dapat refer ke orang lain.\n\nternyata yang start tanpa target besar pun boleh pergi jauh.",
     },
 
     "Tuesday": {
-        # angle: zero dari awal — soalan survival
-        "pagi": "dua orang belajar skill yang sama. sorang simpan semua kerja dalam folder laptop. sorang lagi share kat group facebook dua kali seminggu. lepas 60 hari sorang masih tunggu client datang. sorang lagi dah dapat tiga project. bezanya bukan skill. bezanya visibility.",
+        # cerita: apply kerja bawa hardisk
+        "pagi": "cara aku dapat kerja pertama aku dulu?\n\npergi interview. bawa hardisk.\n\ntunjuk kerja terus dari situ. takde sijil cantik, takde resume panjang, tak sebut pun pointer berapa.\n\ndiorang tengok kerja dalam hardisk tu, terus offer.\n\nramai sangat fokus nak polish resume. tapi orang yang hire kau nak tengok kau boleh buat apa, bukan kau pernah belajar apa.",
 
-        # angle: ada skill tapi tak tahu jual — relatable
-        "tengahari": "ramai yang dah ada skill digital tapi masih apply kerja gaji RM1,500. bukan sebab skill tu tak bernilai. sebab tak tahu macam mana nak charge RM1,500 untuk satu projek je.",
+        # cerita: portfolio beats cert
+        "tengahari": "aku tak pernah dapat kerja atau project sebab sijil.\n\nselalu sebab orang tengok kerja aku terus.\n\nbukan aku tak ada sijil. ada. tapi tak pernah jadi faktor pun.\n\nkalau kau ada kerja yang kau boleh tunjuk, sijil jadi decoration je.",
 
-        # angle: dua-dua — contrast
-        "malam": "orang yang dapat client bukan selalu yang paling pandai. selalu yang paling berani offer diri dulu. skill boleh improve sambil jalan. keberanian nak start tu yang susah nak datang kalau kau tunggu.",
+        # cerita: ambil kerja murah tapi buat lebih
+        "malam": "aku pernah ambil kerja murah sebab minat sangat nak buat.\n\nbayaran tak seberapa. tapi aku buat lebih dari apa yang diorang minta. explore tools baru, polish sampai puas hati sendiri.\n\nkerja tu jadi showcase terbaik dalam portfolio aku. dan dari situ dapat tawaran yang lagi tinggi.\n\nusaha kau buat tu selalu lebih dari bayaran yang kau terima.",
     },
 
     "Wednesday": {
-        # angle: dua-dua — soalan buat orang nak reply
-        "pagi": "tiga skill digital yang paling senang dapat client pertama dalam masa 90 hari: content writing, social media management, data entry. tak perlu software mahal. tak perlu sijil. yang penting ada satu atau dua contoh kerja untuk tunjuk kepada client.",
+        # cerita: minat banyak benda
+        "pagi": "masalah aku dulu, aku minat buat banyak benda.\n\nanimation, game, design, web. semua aku cuba. semua aku ambil kalau ada orang tanya.\n\nrasa macam bagus sebab serba boleh. tapi sebenarnya aku tak tahu nak describe diri aku sebagai apa.\n\norang tanya kau buat apa, kau jawab freelancer. generic. tak ada siapa yang ingat.",
 
-        # angle: zero dari awal — myth bust
-        "tengahari": "tak ada skill pun boleh mula sekarang. pilih satu benda yang kau nak belajar, luangkan 2 jam sehari, dalam 3 bulan kau dah boleh charge orang. yang penting pilih satu je dulu. jangan cuba belajar semua sekali.",
+        # cerita: setiap client kenal kau beza-beza
+        "tengahari": "kelakar bila aku fikir balik.\n\nada client kenal aku sebagai orang buat design. ada yang kenal sebab web. ada yang kenal sebab animation.\n\nbukan seorang pun yang kenal aku sebagai semua tu sekali.\n\nsetiap orang ada versi berbeza pasal siapa aku. dan aku sendiri pun confused.",
 
-        # angle: ada skill tapi tak tahu jual — tip konkrit
-        "malam": "kalau tak tahu nak charge berapa, cara paling mudah adalah tengok orang lain dalam niche yang sama charge apa. ambik tengah-tengah tu sebagai starting point. jangan letak paling murah sebab nak menarik client. client yang datang sebab murah paling susah nak handle.",
+        # cerita: portfolio bersepah
+        "malam": "portfolio aku dulu bersepah.\n\nbuat macam-macam, tapi bila letak semua sekali nampak tak ada arah. macam kedai yang jual segalanya tapi takde specialty.\n\nclient yang datang pun random. dan bila nak market diri sendiri, tak tahu nak highlight apa dulu.\n\nbukannya skill tak ada. tapi tak tersusun.",
     },
 
     "Thursday": {
-        # angle: ada skill tapi tak tahu jual — soalan insecurity
-        "pagi": "kalau rasa skill kau terlalu biasa untuk charge mahal, tengok dari sisi client. dia tak cari orang paling pandai. dia cari orang yang boleh selesaikan masalah dia, senang nak communicate, dan deliver on time. tiga benda tu lebih penting dari skill tahap expert.",
+        # cerita: buat kerja lebih dari bayaran
+        "pagi": "aku pernah explore tools baru dalam project client yang bayar murah.\n\nbukannya aku kena buat pun. tapi aku nak cuba. sebab minat.\n\nclient dapat result lagi bagus dari yang diorang expect. aku dapat experience dari tools baru tu.\n\ndua-dua untung. walaupun bayaran time tu tak reflect usaha aku langsung.",
 
-        # angle: zero dari awal — straight truth
-        "tengahari": "belajar skill digital sekarang lagi senang dari 10 tahun dulu. semua ada kat YouTube, percuma. yang susahnya bukan belajar. yang susahnya nak duduk diam 2 jam sehari buat benda yang belum nampak hasilnya lagi.",
+        # cerita: dari referral je
+        "tengahari": "hampir semua client aku datang dari referral.\n\nkawan refer. company lama refer. orang yang pernah tengok kerja aku refer.\n\nbukan aku pergi cari pun. diorang datang sendiri.\n\ntapi masalahnya, referral tak consistent. ada bulan banyak, ada bulan senyap. dan aku tak ada cara nak control bila diorang datang.",
 
-        # angle: dua-dua — story dua karakter
-        "malam": "dua orang start freelance sama masa. sorang buat research 3 bulan dulu, tunggu semua perfect. sorang lagi terus hantar offer, kena reject, hantar lagi, dapat client minggu ketiga. yang dapat client tu bukan lagi pandai. dia just tak tunggu ready.",
+        # cerita: struggle consistency
+        "malam": "benda yang aku paling struggle sampai sekarang bukan skill.\n\nbukan cari client. bukan bayaran.\n\ntapi consistency.\n\nada masa aku productive gila, siap kerja berlambak. ada masa aku procrastinate sampai deadline dah dekat baru gerak.\n\ntu masalah yang aku masih keje nak selesaikan.",
     },
 
     "Friday": {
-        # angle: dua-dua — soalan visualize
-        "pagi": "kalau kau boleh buat RM3,000 sebulan dari rumah guna laptop, skill apa yang kau rasa paling berpotensi untuk kau belajar atau jual sekarang?",
+        # cerita: minat jadi kelebihan
+        "pagi": "sebab aku minat, aku tak rasa penat walaupun kerja lama.\n\nclient lain mungkin kena paksa pekerja diorang buat overtime. aku buat overtime sendiri sebab nak polish lagi.\n\nbukan semua orang ada tu. dan bila client rasa perbezaan tu, diorang ingat kau.",
 
-        # angle: ada skill tapi tak tahu jual — myth bust
-        "tengahari": "tak perlu website cantik, logo professional, atau business card untuk start ambik client. client nak tahu satu benda je. boleh ke kau selesaikan masalah diorang. yang lain-lain tu hiasan je, boleh datang kemudian.",
+        # cerita: jumpa satu servis yang gabung semua minat
+        "tengahari": "bertahun aku buat macam-macam. animation, design, web, game.\n\nlepas tu aku jumpa satu servis yang boleh gabungkan semua tu sekali.\n\nambil masa nak fokus. tapi bila dah fokus kat satu benda tu, barulah mudah promote diri.\n\nasal sebut servis tu, orang terus ingat nama aku. bukan nama orang lain.",
 
-        # angle: dua-dua — tip tiga benda
-        "malam": "tiga benda yang buat client pilih kau walaupun kau baru start. kau faham masalah diorang sebelum diorang habis explain. kau balas mesej dengan cepat dan jelas. kau buat apa yang kau janji. skill boleh improve. tiga benda ni boleh buat dari hari pertama.",
+        # cerita: dari scattered jadi known for one thing
+        "malam": "perasaan bila orang mula associate nama kau dengan satu benda tu lain sikit.\n\nsebelum ni orang tanya aku buat apa, aku explain panjang. diorang pun confused.\n\nlepas aku fokus kat satu benda, orang tanya kau buat apa, aku jawab satu ayat. diorang faham terus.\n\nitu je bezanya. tapi effect dia jauh sangat.",
     },
 
     "Saturday": {
-        # angle: dua-dua — soalan hot buat orang nak share opinion
-        "pagi": "ramai yang ada skill tapi tak dapat client sebab satu benda: diorang invisible. orang tak tahu diorang wujud. cara fix dia mudah: pilih satu platform, post satu benda seminggu pasal kerja kau, konsisten selama 8 minggu. bukan kena promote diri. cukup tunjuk proses kerja kau je. orang akan mula notice.",
+        # cerita: first job free jadi pintu
+        "pagi": "kerja free pertama aku bukan rugi.\n\nwalaupun upah roti dan air, aku buat dengan sepenuh hati. sebab aku genuinely enjoy buat kerja tu.\n\nlepas tu kawan tu refer aku ke orang lain. lepas tu orang lain tu refer ke company. dan dari situlah bola mula bergolek.\n\nkadang pintu pertama tu kecil je. tapi dia yang buka semua pintu lain.",
 
-        # angle: zero dari awal — validate perasaan lepas tu flip
-        "tengahari": "rasa macam semua orang dah jauh depan tu normal. diorang dah ada client, dah ada income. padahal 6 bulan lepas diorang pun duduk tempat yang sama dengan kau sekarang. bezanya diorang tak berhenti kat rasa tu.",
+        # cerita: buat personal project jadi habit
+        "tengahari": "sampai sekarang aku masih buat personal project walaupun takde siapa bayar.\n\nbukan sebab takde kerja. tapi sebab itu cara aku stay sharp.\n\ncuba tools baru, explore idea yang aku sendiri nak tengok hasilnya, buat benda yang tak ada dalam portfolio lagi.\n\nkalau tunggu client je baru nak belajar benda baru, kau akan selalu ketinggalan.",
 
-        # angle: ada skill tapi tak tahu jual — contrast
-        "malam": "ada dua jenis orang dengan skill yang sama. yang pertama tunggu orang perasan dia pandai. yang kedua pergi bagitau orang dia boleh buat apa. result diorang jauh berbeza bukan sebab skill berbeza. sebab satu visible, satu invisible.",
+        # cerita: hot take pasal minat
+        "malam": "orang selalu kata jangan buat kerja yang kau suka sebab nanti hilang minat.\n\naku tak setuju.\n\naku buat kerja yang aku minat dari dulu sampai sekarang. dan sebab tu aku boleh buat lagi baik dari orang yang buat sebab duit je.\n\nminat tak hilang bila kau buat kerja. minat hilang bila kau buat kerja yang salah.",
     },
 
     "Sunday": {
-        # angle: dua-dua — soalan ringan positif
-        "pagi": "benda paling banyak tahan orang dari start freelance bukan skill, bukan modal, bukan masa. tapi menunggu rasa ready. yang hakikatnya, rasa ready tu tak datang sebelum kau start. dia datang lepas kau dah buat benda tu walaupun takut.",
+        # cerita: reflect perjalanan
+        "pagi": "kalau aku tengok balik dari mula sampai sekarang.\n\nmula dengan kerja free upah roti dan air. portfolio satu contoh je. interview bawa hardisk.\n\nbertahun buat macam-macam sampai tak tahu nak describe diri sendiri.\n\nlepas tu perlahan-lahan jumpa satu fokus. dan dari situ baru nampak arah.\n\nperjalanan dia tak straight. tapi setiap bengkang-bengkok tu ada sebabnya.",
 
-        # angle: dua-dua — relatable closing
-        "tengahari": "tak ada skill pun okay. ada skill tapi tak tahu jual pun okay. dua-dua boleh selesai. yang tak okay adalah bila kau dah tahu kau nak buat sesuatu tapi kau biarkan hari berlalu macam tu je.",
+        # cerita: nasihat untuk diri sendiri dulu
+        "tengahari": "kalau boleh balik masa dan cakap satu benda je dengan diri sendiri yang dulu.\n\naku cakap, fokus lagi awal.\n\nbukan maksud tak boleh explore. explore kena. tapi kena ada satu anchor yang ikat semua tu.\n\ntanpa anchor, kau akan spend tahun buat banyak benda tapi tak pergi mana-mana.",
 
-        # angle: dua-dua — closing minggu penuh value
-        "malam": "seminggu kita cakap banyak benda. tapi kalau nak simplify jadi satu, pilih satu skill, bagitau satu orang kau boleh bantu diorang dengan skill tu, dan tengok apa jadi. bukan plan panjang yang kau perlukan sekarang. kau perlukan satu langkah kecil yang betul.",
+        # cerita: masih dalam perjalanan
+        "malam": "aku share cerita ni bukan sebab aku dah berjaya.\n\naku masih dalam proses. masih struggle dengan consistency. masih ada bulan yang senyap.\n\ntapi aku share sebab aku rasa ramai yang ada situasi sama dengan aku dulu. minat ada, skill ada, tapi tak tahu nak mulakan macam mana atau nak fokus kat mana.\n\nkita sama je sebenarnya.",
     },
 }
 
