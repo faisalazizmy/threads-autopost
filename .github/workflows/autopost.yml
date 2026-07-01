@@ -1,12 +1,11 @@
 name: Threads Auto Post
 
 on:
-  # PAUSED — uncomment to resume auto-schedule
-  # schedule:
-  #   - cron: '0 0 * * *'   # 8am Malaysia (UTC+8)
-  #   - cron: '0 4 * * *'   # 12pm Malaysia
-  #   - cron: '0 5 * * *'   # 1pm Malaysia
-  #   - cron: '0 13 * * *'  # 9pm Malaysia
+  schedule:
+    - cron: '0 0 * * *'   # 8am Malaysia (UTC+8)
+    - cron: '0 4 * * *'   # 12pm Malaysia
+    - cron: '0 5 * * *'   # 1pm Malaysia
+    - cron: '0 13 * * *'  # 9pm Malaysia
   workflow_dispatch:
     inputs:
       force_slot:
