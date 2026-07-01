@@ -76,7 +76,7 @@
 </head>
 <body>
   <h1>Threads Auto Post</h1>
-  <p class="handle">@fsalz.wfh — auto posting sistem <span style="opacity:.35;font-size:10px">v2.1</span></p>
+  <p class="handle">@fsalz.wfh — auto posting sistem <span style="opacity:.35;font-size:10px">v2.3</span></p>
 
   <div class="next-box">
     <div>
@@ -226,8 +226,23 @@
     }
 
     let nextInfo = getNextSlot();
+    let schedPaused = false;
+
+    function setSchedPaused(paused) {
+      schedPaused = paused;
+      if (paused) {
+        document.getElementById('next-slot-name').textContent = 'Schedule Dihentikan';
+        document.getElementById('next-slot-time').textContent = 'Auto post tidak aktif';
+        document.getElementById('countdown').textContent = '--:--:--';
+        document.getElementById('countdown').style.color = '#f85149';
+      } else {
+        document.getElementById('countdown').style.color = '#3fb950';
+        updateCountdown();
+      }
+    }
 
     function updateCountdown() {
+      if (schedPaused) return;
       nextInfo = getNextSlot();
       const { slot, msUntil } = nextInfo;
       document.getElementById('next-slot-name').textContent = slot.label + ' — ' + slot.hour + ':00';
@@ -473,10 +488,12 @@
         btn.textContent = '▶ Resume Schedule';
         btn.style.color = '#f85149';
         btn.style.borderColor = '#f85149';
+        setSchedPaused(true);
       } else {
         btn.textContent = '⏸ Stop Schedule';
         btn.style.color = '#8b949e';
         btn.style.borderColor = '#30363d';
+        setSchedPaused(false);
       }
     }
 
@@ -492,6 +509,7 @@
         btn.textContent = '▶ Resume Schedule';
         btn.style.color = '#f85149';
         btn.style.borderColor = '#f85149';
+        setSchedPaused(true);
       }
     }
 
