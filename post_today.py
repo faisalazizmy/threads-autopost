@@ -42,8 +42,8 @@ POSTS = {
     },
 
     "Thursday": {
-        # cerita: spark dari mak dan makcik
-        "pagi": "spark aku datang dari dua benda yang berlaku serentak.\n\nmak aku cikgu. ada laptop. aku explore teknologi, tengok apa yang boleh aku hasilkan dengan benda tu.\n\nmakcik aku belajar multimedia. aku tengok dia buat kerja, tengok benda yang dia belajar.\n\ndari situ timbul sesuatu. rasa nak tahu lagi. rasa seronok bila sedar teknologi ni boleh hasilkan benda yang kita sendiri reka.\n\nvideo pertama aku buat untuk sepupu sendiri. guna je tools yang dah ada dalam laptop tu. tak tunggu ada software lagi canggih, tak tunggu semua cukup dulu.\n\nguna apa yang ada. hasilkan sesuatu. belajar dari situ.\n\ncara orang dapat spark memang beza-beza. tapi cara guna spark tu sama je. mula dengan apa yang ada depan mata kau sekarang.",
+        # cerita: buat kerja lebih dari bayaran
+        "pagi": "aku pernah explore tools baru dalam project client yang bayar murah.\n\nbukannya aku kena buat pun. tapi aku nak cuba. sebab minat.\n\nclient dapat result lagi bagus dari yang diorang expect. aku dapat experience dari tools baru tu.\n\ndua-dua untung. walaupun bayaran time tu tak reflect usaha aku langsung.",
 
         # cerita: dari referral je
         "tengahari": "hampir semua client aku datang dari referral.\n\nkawan refer. company lama refer. orang yang pernah tengok kerja aku refer.\n\nbukan aku pergi cari pun. diorang datang sendiri.\n\ntapi masalahnya, referral tak consistent. ada bulan banyak, ada bulan senyap. dan aku tak ada cara nak control bila diorang datang.",
@@ -81,8 +81,8 @@ POSTS = {
         # cerita: nasihat untuk diri sendiri dulu
         "tengahari": "kalau boleh balik masa dan cakap satu benda je dengan diri sendiri yang dulu.\n\naku cakap, fokus lagi awal.\n\nbukan maksud tak boleh explore. explore kena. tapi kena ada satu anchor yang ikat semua tu.\n\ntanpa anchor, kau akan spend tahun buat banyak benda tapi tak pergi mana-mana.",
 
-        # cerita: masih dalam perjalanan
-        "malam": "aku share cerita ni bukan sebab aku dah berjaya.\n\naku masih dalam proses. masih struggle dengan consistency. masih ada bulan yang senyap.\n\ntapi aku share sebab aku rasa ramai yang ada situasi sama dengan aku dulu. minat ada, skill ada, tapi tak tahu nak mulakan macam mana atau nak fokus kat mana.\n\nkita sama je sebenarnya.",
+        # cerita: spark — closing minggu
+        "malam": "spark aku datang dari dua benda yang berlaku serentak.\n\nmak aku cikgu. ada laptop. aku explore teknologi, tengok apa yang boleh aku hasilkan dengan benda tu.\n\nmakcik aku belajar multimedia. aku tengok dia buat kerja, tengok benda yang dia belajar.\n\ndari situ timbul sesuatu. rasa nak tahu lagi. rasa seronok bila sedar teknologi ni boleh hasilkan benda yang kita sendiri reka.\n\nvideo pertama aku buat untuk sepupu sendiri. guna je tools yang dah ada dalam laptop tu. tak tunggu ada software lagi canggih, tak tunggu semua cukup dulu.\n\nguna apa yang ada. hasilkan sesuatu. belajar dari situ.\n\ncara orang dapat spark memang beza-beza. tapi cara guna spark tu sama je. mula dengan apa yang ada depan mata kau sekarang.",
     },
 }
 
