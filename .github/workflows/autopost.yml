@@ -3,8 +3,7 @@ name: Threads Auto Post
 on:
   schedule:
     - cron: '0 0 * * *'   # 8am Malaysia (UTC+8)
-    - cron: '0 4 * * *'   # 12pm Malaysia
-    - cron: '0 5 * * *'   # 1pm Malaysia
+    - cron: '0 4 * * *'   # 12pm Malaysia (thread)
     - cron: '0 13 * * *'  # 9pm Malaysia
   workflow_dispatch:
     inputs:
@@ -41,7 +40,6 @@ jobs:
           if [ -z "$SLOT" ]; then
             if [ "$HOUR" = "08" ]; then SLOT="pagi"
             elif [ "$HOUR" = "12" ]; then SLOT="thread"
-            elif [ "$HOUR" = "13" ]; then SLOT="tengahari"
             elif [ "$HOUR" = "21" ]; then SLOT="malam"
             else echo "Tiada slot untuk jam $HOUR MYT — skip."; exit 0
             fi
