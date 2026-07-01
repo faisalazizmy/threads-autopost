@@ -9,60 +9,59 @@ USER_ID = "36445274191783117"
 
 THREADS = {
     "Monday": {
-        "hook": "cara dapat client pertama tanpa pengalaman, tanpa portfolio, tanpa keluar rumah.",
+        "hook": "upah pertama aku buat kerja? roti dan air. dan aku buat dengan sepenuh hati.",
         "replies": [
-            "1. tak perlu portfolio sempurna. buat satu kerja free untuk orang yang kau kenal dulu. screenshot hasilnya. tu dah jadi bukti kau boleh buat kerja. client nak tengok proof, bukan sijil.",
-            "2. jangan terus pergi platform macam Fiverr atau Upwork. pergi dulu kat group facebook dalam niche kau. tengok masalah orang, offer bantuan. orang hire orang yang diorang dah kenal, bukan stranger.",
-            "3. bila dah ready nak offer servis, jangan mesej \"ada kerja tak untuk saya?\" cuba \"saya nampak awak ada masalah ni, saya boleh bantu.\" beza cara tanya tu je yang tentukan dapat client atau tak.",
+            "kawan aku yang minta tolong. dia tak ada bajet, aku pun tak kisah. masa tu portfolio aku kosong. satu contoh pun takde. kerja free tu jadi satu-satunya contoh yang aku ada.",
+            "dari kerja tu je aku dapat kerja lain. kawan tu refer aku ke kawan dia. kawan dia refer ke tempat lain. bola mula bergolek dari satu kerja yang upahnya roti dan air.",
+            "benda yang aku belajar: first job bukan pasal bayaran. pasal kau ada sesuatu untuk tunjuk bila orang tanya ada contoh kerja tak. kalau takde, susah nak maju. kalau ada satu pun, tu dah cukup untuk start.",
         ]
     },
     "Tuesday": {
-        "hook": "skill ada, masa ada, laptop ada. tapi income dari freelance masih sifar. masalahnya bukan skill. masalahnya tak tahu nak buat apa dulu.",
+        "hook": "aku pergi interview kerja pertama aku dengan bawa hardisk. takde resume cantik. takde sijil nak tunjuk.",
         "replies": [
-            "1. langkah pertama bukan cari client. tentukan dulu kau nak bantu siapa. graphic designer untuk siapa? content writer untuk industri apa? lagi specific lagi senang orang ingat kau.",
-            "2. lepas tahu target, buat satu contoh kerja untuk niche tu walaupun takda client lagi. kalau kau nak buat social media untuk F&B, buat mock post untuk kedai makan yang kau suka. tu dah jadi portfolio.",
-            "3. lepas ada contoh kerja, pergi kat tempat target kau ada. group facebook, forum, community. tunjuk kerja kau kat sana. bukan jual dulu, tunjuk dulu.",
+            "aku prepare benda lain je masa tu. kumpul semua kerja yang pernah aku buat, masukkan dalam hardisk. bukan banyak pun. tapi ada.",
+            "masa interview, aku tak banyak cakap pasal background. aku terus tunjuk kerja dalam hardisk. diorang tengok, diam sekejap, pastu tanya bila boleh start.",
+            "tu la kali pertama aku sedar. orang yang nak hire kau tak kisah sangat kau belajar kat mana atau result exam berapa. diorang nak tengok kau boleh buat apa. portfolio tu bahasa yang semua orang faham.",
         ]
     },
     "Wednesday": {
-        "hook": "tak ada skill pun boleh start freelance. tapi kena tahu dulu nak belajar apa.",
+        "hook": "dulu aku tak tahu nak describe diri aku sebagai apa. design ke, web ke, animation ke, game ke. semua aku buat.",
         "replies": [
-            "1. pilih skill berdasarkan dua benda. kau ada minat ke, dan ada orang yang nak bayar ke. kalau ada dua-dua, go ahead. kalau ada satu je, fikir balik.",
-            "2. skill digital yang paling mudah dapat client pertama untuk pemula adalah content writing, data entry, dan social media management. tak perlu software mahal, tak perlu kursus bertahun.",
-            "3. luangkan 2 jam sehari untuk belajar. dalam masa 6 minggu kau dah boleh buat kerja basic. dalam masa 3 bulan kau dah boleh charge orang. kuncinya konsisten, bukan belajar laju.",
+            "bila orang tanya kau buat apa, aku cakap je freelancer. sebab aku sendiri pun tak tahu nak explain lebih. ada masa buat design, ada masa buat web, ada masa buat animation. ambil je apa yang datang.",
+            "masalahnya setiap client kenal aku beza. ada yang ingat aku orang design. ada yang ingat aku orang web. takde seorang pun yang ada gambaran penuh pasal apa yang aku sebenarnya buat.",
+            "dan bila nak promote diri sendiri pun susah. nak letak apa dalam bio? nak highlight kerja mana dulu? portfolio nampak bersepah sebab memang bersepah. ni masalah yang ramai freelancer dengan minat banyak benda hadapi tapi jarang cakap pasal.",
         ]
     },
     "Thursday": {
-        "hook": "ramai freelancer baru buat kesilapan yang sama bila set harga. dan kesilapan tu yang buat diorang penat tapi tak kaya.",
+        "hook": "aku pernah buat kerja yang bayarannya tak seberapa tapi aku habiskan masa lagi banyak dari yang sepatutnya.",
         "replies": [
-            "1. jangan charge ikut masa. charge ikut value. kalau kau boleh selesaikan masalah client dalam 2 jam yang diorang dah struggle 2 minggu, 2 jam tu bernilai lebih dari RM50.",
-            "2. tengok harga orang lain dalam niche sama sebagai reference, bukan standard. kau boleh charge lagi tinggi kalau kau communicate value kau dengan betul.",
-            "3. bila client kata mahal, jangan terus turun harga. tanya dulu \"bajet awak berapa?\" kadang diorang ada bajet lebih, tapi nak test je kau akan turun ke tak.",
-            "4. letak harga dengan confident. kalau kau sendiri rasa tak yakin masa sebut harga, client akan rasa tu. yakin dulu, baru orang lain yakin.",
+            "client tu bayar murah. aku terima sebab aku genuinely minat nak buat projek tu. lepas terima, aku cuba tools yang dah lama nak explore. polish sampai rasa puas hati sendiri, bukan sekadar cukup-cukup je.",
+            "client dapat hasil lagi bagus dari expectation diorang. aku dapat experience dari tools baru yang aku explore. dan kerja tu jadi salah satu yang paling kuat dalam portfolio aku.",
+            "ramai kata jangan jual murah. aku faham logic tu. tapi ada situasi di mana kerja bagi kau lebih dari sekadar duit. kau kena tahu bezakan mana yang jual diri, mana yang invest dalam diri sendiri.",
         ]
     },
     "Friday": {
-        "hook": "cara present diri sebagai freelancer supaya client percaya kau, walaupun kau baru start.",
+        "hook": "lepas bertahun buat macam-macam, akhirnya aku jumpa satu benda yang boleh ikat semua minat aku sekali.",
         "replies": [
-            "1. profile kau kena cakap satu benda dengan jelas. siapa kau bantu dan apa masalah kau selesaikan. bukan \"saya freelancer\" tapi \"saya bantu bisnes kecil dapat lebih customer guna social media.\"",
-            "2. bila approach client, tunjukkan kau dah buat homework. sebut nama bisnes diorang, sebut apa yang kau nampak boleh improve. orang suka orang yang perhatikan diorang.",
-            "3. follow up sekali kalau takde reply dalam 3 hari. ramai client bukan ignore, tapi busy. satu follow up yang sopan dah cukup. lebih dari tu dah jadi pushy.",
+            "bukan senang nak jumpa. aku explore dulu, buat banyak benda, nampak pattern apa yang aku enjoy paling banyak dan apa yang orang minta paling kerap. dari situ baru nampak satu servis yang make sense.",
+            "ambil masa nak fokus kat satu benda tu je. rasa macam rugi sebab kena tinggalkan yang lain. tapi bila dah fokus, marketing jadi senang. orang senang nak ingat kau untuk apa.",
+            "sekarang bila orang sebut servis tu, diorang ingat nama aku. bukan sebab aku seorang je yang buat. tapi sebab aku konsisten dan orang dah associate nama aku dengan benda tu. tu power fokus.",
         ]
     },
     "Saturday": {
-        "hook": "tiga sebab kenapa orang ada skill tapi masih tak dapat client.",
+        "hook": "aku masih buat project yang takde siapa bayar. sampai sekarang.",
         "replies": [
-            "1. diorang invisible. takde sesiapa yang tahu diorang wujud dan boleh buat kerja tu. solution dia mudah je. kena visible dulu sebelum boleh dapat kerja.",
-            "2. diorang tunggu. tunggu ada orang tanya, tunggu ada orang refer, tunggu masa yang sesuai. tapi dalam freelance, orang yang pergi dulu yang dapat, bukan yang tunggu.",
-            "3. diorang tak specific. cuba buat semua benda untuk semua orang. client susah nak percaya generalist. tapi specialist dalam satu benda nampak lagi credible walaupun pengalaman sama.",
+            "bukan sebab takde kerja. ada je. tapi personal project adalah cara aku kekal sharp dan kekal excited dengan kerja aku. bila buat untuk diri sendiri, takde constraint. boleh explore sesuka hati.",
+            "dari personal project inilah aku selalu jumpa teknik baru, tools baru, cara baru nak selesaikan masalah. lepas tu bila apply kat kerja client, quality naik.",
+            "kalau kau tunggu client dulu baru nak belajar benda baru, kau akan selalu satu langkah di belakang. buat dulu untuk diri sendiri. client datang kemudian.",
         ]
     },
     "Sunday": {
-        "hook": "minggu ni kita belajar banyak pasal freelance. tapi aku nak tanya satu soalan je.",
+        "hook": "aku bukan share pasal freelance sebab aku dah figure out semua benda. aku share sebab aku masih dalam proses.",
         "replies": [
-            "1. apa yang betul-betul tahan kau dari start lagi? bukan jawapan standard. jawapan sebenar.",
-            "2. sebab ramai yang tahu apa nak buat, tapi masih tak buat. bukan sebab malas. sebab takut. takut tak cukup bagus, takut orang reject, takut buang masa.",
-            "3. tapi rejection pertama tu bukan tanda kau tak layak. dia tanda kau dah start. orang yang takde rejection langsung adalah orang yang tak pernah cuba pun.",
+            "mula dengan kerja free upah roti dan air. interview dengan hardisk. bertahun buat macam-macam sampai tak tahu describe diri sendiri apa. portfolio bersepah. referral je datang, tak ada cara nak control.",
+            "perlahan-lahan jumpa fokus. jumpa satu servis yang make sense. tapi consistency masih jadi cabaran. masih ada bulan yang senyap. masih ada masa nak procrastinate.",
+            "aku rasa ramai yang sama situasi dengan aku. skill ada, minat ada, tapi tak tahu nak arah ke mana atau macam mana nak jadi consistent. kita sama je sebenarnya. kita figure out sama-sama.",
         ]
     },
 }
