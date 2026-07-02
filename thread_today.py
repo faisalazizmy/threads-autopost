@@ -9,7 +9,7 @@ USER_ID = "36445274191783117"
 
 THREADS = {
     "Monday": {
-        "hook": "cara aku dapat client pertama: buat kerja free untuk kawan, upah roti dan air. ni cerita penuh dia.",
+        "hook": "cara aku dapat client pertama: buat kerja free untuk kawan, upah roti dan air. ni cerita penuh dia. 👇",
         "replies": [
             "masa tu aku takde portfolio langsung. kawan aku perlukan tolong, dia takde bajet. aku buat je. bukan sebab strategik pun, sebab aku memang nak buat kerja tu. siap, aku simpan hasil dia elok-elok.",
             "hasil kerja tu jadi satu-satunya contoh yang aku ada. bila orang lain tanya boleh tengok kerja kau tak, aku ada benda nak tunjuk. dari situ kawan refer ke kawan dia, kawan dia refer ke company. bola bergolek.",
@@ -17,7 +17,7 @@ THREADS = {
         ]
     },
     "Tuesday": {
-        "hook": "client tanya harga, aku tak bagi. aku ajak meeting dulu. sebab tu aku boleh charge lebih tinggi.",
+        "hook": "client tanya harga, aku tak bagi. aku ajak meeting dulu. sebab tu aku boleh charge lebih tinggi. 👇",
         "replies": [
             "aku takde rate card khusus. sebab setiap client masalah dia lain. bila kau bagi harga sebelum faham masalah diorang, kau letak nilai kerja sendiri secara buta. jadi aku ajak online meeting 15 sampai 30 minit. aku panggil dia discovery call.",
             "dalam call tu aku buat dua benda serentak. present hasil kerja aku betul-betul, dan study business diorang. tanya apa yang aku nak tanya. dari situ trust terbina sebelum harga pun disebut lagi.",
@@ -25,7 +25,7 @@ THREADS = {
         ]
     },
     "Wednesday": {
-        "hook": "bertahun aku buat animation, design, web, game. lepas tu aku jumpa satu benda yang ikat semua tu sekali.",
+        "hook": "bertahun aku buat animation, design, web, game. lepas tu aku jumpa satu benda yang ikat semua tu sekali. 👇",
         "replies": [
             "masa buat semua benda tu, setiap client kenal aku beza. ada yang ingat aku orang design. ada yang ingat aku orang web. aku sendiri tak tahu nak describe diri sebagai apa. portfolio pun bersepah.",
             "aku tak terus jumpa jawapan. aku perhatikan pattern: apa yang aku paling enjoy buat, dan apa yang orang paling kerap minta dari aku. dari dua benda tu baru nampak satu servis yang boleh gabung semua minat aku.",
@@ -33,7 +33,7 @@ THREADS = {
         ]
     },
     "Thursday": {
-        "hook": "dulu client reject kerja aku tanpa sebab, aku terus refund. sekarang tak lagi. ni apa yang aku belajar.",
+        "hook": "dulu client reject kerja aku tanpa sebab, aku terus refund. sekarang tak lagi. ni apa yang aku belajar. 👇",
         "replies": [
             "masa awal dulu aku jenis malas nak pening kepala. client tak puas hati, refund je, move on ke next project. rasa macam professional. tapi sebenarnya aku tengah ajar client macam tu yang perangai camtu boleh dapat kerja free.",
             "lepas tu aku mula document semua benda. setiap progress, setiap request client, setiap approval. dalam whatsapp, dalam email. untuk project besar aku siap buat website khas untuk client tengok progress dan semua details.",
@@ -41,7 +41,7 @@ THREADS = {
         ]
     },
     "Friday": {
-        "hook": "setiap project aku buat lebih dari yang client minta. bukan untuk client tu. untuk aku sendiri.",
+        "hook": "setiap project aku buat lebih dari yang client minta. bukan untuk client tu. untuk aku sendiri. 👇",
         "replies": [
             "sebab hasil kerja tu bukan sekadar deliverable untuk client. dia jadi portfolio aku, bahan cerita aku, dan sebab orang refer aku ke orang lain. kalau siap sekadar siap, kau dapat bayaran je. habis situ.",
             "tapi kalau siap sampai tahap showcase, kau dapat tiga benda: bayaran, portfolio yang kuat, dan client yang teruja nak cerita pasal kau kat orang lain. sebab tu hampir semua client aku sekarang datang dari referral.",
@@ -49,7 +49,7 @@ THREADS = {
         ]
     },
     "Saturday": {
-        "hook": "aku masih buat project yang takde siapa bayar. sampai sekarang. dan ni sebab dia.",
+        "hook": "aku masih buat project yang takde siapa bayar. sampai sekarang. dan ni sebab dia. 👇",
         "replies": [
             "bukan sebab takde kerja. ada je. tapi personal project adalah cara aku kekal sharp. bila buat untuk diri sendiri, takde constraint. boleh explore sesuka hati. sempena raya buat design sendiri. jumpa tools baru terus cuba.",
             "dari personal project la aku selalu jumpa teknik baru, tools baru, cara baru selesaikan masalah. lepas tu bila apply kat kerja client, quality naik. client tak tahu pun benda tu datang dari project suka-suka aku.",
@@ -57,7 +57,7 @@ THREADS = {
         ]
     },
     "Sunday": {
-        "hook": "aku share pasal freelance bukan sebab aku dah berjaya. aku share sebab aku masih dalam proses.",
+        "hook": "aku share pasal freelance bukan sebab aku dah berjaya. aku share sebab aku masih dalam proses. 👇",
         "replies": [
             "mula dengan kerja free upah roti dan air. interview bawa hardisk. bertahun buat macam-macam sampai tak tahu describe diri sendiri. portfolio bersepah. client datang dari referral je, tak boleh control bila.",
             "perlahan-lahan jumpa fokus. belajar buat discovery call. belajar document semua benda. belajar buat setiap project jadi showcase. tapi consistency masih jadi cabaran sampai sekarang.",
