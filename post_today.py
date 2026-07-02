@@ -2,93 +2,100 @@ import requests
 import time
 import sys
 import os
-from datetime import datetime
+import json
+from datetime import datetime, timedelta
 
 ACCESS_TOKEN = os.environ.get("THREADS_ACCESS_TOKEN")
 USER_ID = os.environ.get("THREADS_USER_ID", "36445274191783117")
+LOG_FILE = "log.json"
 
-POSTS = {
-    "Monday": {
-        # cerita: first job roti dan air
-        "pagi": "upah pertama aku: roti dan air.\n\nclient pertama tu kawan aku sendiri. dia takde duit. aku pun tak kisah, sebab aku just nak buat kerja tu.\n\ntapi dari kerja tu aku ada portfolio pertama aku. satu contoh je. cukup untuk dapat client seterusnya.\n\nkorang punya first job dulu macam mana?",
+POSTS_QUEUE = [
+    # 1
+    "upah pertama aku: roti dan air.\n\nclient pertama tu kawan aku sendiri. dia takde duit. aku pun tak kisah, sebab aku just nak buat kerja tu.\n\ntapi dari kerja tu aku ada portfolio pertama aku. satu contoh je. cukup untuk dapat client seterusnya.\n\nkorang punya first job dulu macam mana?",
+    # 2
+    "interview kerja pertama aku, aku bawa hardisk.\n\ntakde resume cantik. takde sijil nak tunjuk. aku terus tunjuk kerja dari situ.\n\ndiorang tengok, diam sekejap, terus tanya bila boleh start.\n\nkorang pernah dapat kerja sebab portfolio, bukan sebab resume?",
+    # 3
+    "aku tak start freelance dengan target nak jadi fulltime pun.\n\njust nak duit lebih. buat bila ada masa lapang. takde tekanan.\n\ntapi sebab buat dengan enjoy, kerja jadi lagi baik. client happy, dapat refer ke orang lain.\n\nkorang start freelance sebab apa? duit, minat, atau terpaksa?",
+    # 4
+    "aku perasan ada dua jenis client.\n\nsatu, yang nak jumpa depan depan atau kat ofis. dua, yang okay je meeting online.\n\npengalaman aku: client yang nak jumpa depan depan ni biasanya susah nak close. aku pun tak tahu kenapa. dah la keluar kos, duit minyak, masa perjalanan.\n\nsekarang semua meeting aku buat online dulu. jimat masa, dan aku boleh present hasil kerja dengan lebih baik atas skrin. lepas close baru decide nak jumpa ke tak. servis digital kan.\n\nkorang pernah perasan pattern ni ke?",
+    # 5
+    "masalah aku dulu: aku minat buat banyak benda.\n\nanimation, game, design, web. semua aku cuba. semua aku ambil kalau ada orang tanya.\n\nrasa macam bagus sebab serba boleh. tapi bila orang tanya aku buat apa, aku jawab freelancer je. generic. tak ada siapa ingat.\n\nkorang jenis fokus satu benda ke minat banyak benda macam aku?",
+    # 6
+    "aku tak pernah dapat kerja sebab sijil.\n\nselalu sebab orang tengok kerja aku terus. sijil aku ada. tapi tak pernah jadi faktor pun.\n\nkalau kau ada kerja yang boleh tunjuk, sijil jadi decoration je.\n\nsetuju ke tak? aku nak dengar pendapat korang.",
+    # 7
+    "client tanya harga, aku tak bagi terus.\n\naku takde rate card. aku ajak online meeting 15 sampai 30 minit, aku panggil discovery call. masa tu aku present hasil kerja betul betul, sambil study business diorang.\n\nhabis meeting aku hantar custom quotation ikut apa yang aku belajar. bukan template.\n\ntrust dah terbina sebelum harga disebut. peluang dapat project sangat tinggi.\n\nkorang bagi harga terus atau meeting dulu?",
+    # 8
+    "benda pelik yang aku belajar: client yang bayar mahal, lagi senang layan.\n\ndiorang describe details, tahu apa yang diorang nak. kerja jadi mudah sebab arah dah jelas.\n\nclient yang murah pulak selalunya baru nak start. serah kerja tanpa details. lepas siap baru demand macam macam, dan asyik berubah.\n\nharga murah tak bermaksud kerja senang. selalunya sebaliknya.\n\nkorang pernah kena tak? client paling murah, kerenah paling banyak?",
+    # 9
+    "sebab aku minat, aku tak rasa penat walaupun kerja lama.\n\norang lain kena paksa buat overtime. aku buat overtime sendiri sebab nak polish lagi.\n\nbukan semua orang ada benda tu. dan bila client nampak perbezaan tu, diorang ingat kau.\n\nkorang pernah tak sedar dah kerja berjam-jam sebab seronok?",
+    # 10
+    "bertahun aku buat animation, design, web, game.\n\nsetiap client kenal aku beza. portfolio bersepah. aku sendiri tak tahu describe diri sebagai apa.\n\nlepas tu aku perhatikan dua benda: apa yang aku paling enjoy, dan apa yang orang paling kerap minta. dari situ jumpa satu servis yang gabung semua minat aku.\n\nsekarang asal orang sebut servis tu, terus ingat nama aku.\n\nkorang dah jumpa benda korang atau masih explore?",
+    # 11
+    "perasaan bila orang mula associate nama kau dengan satu benda, lain macam sikit.\n\ndulu orang tanya aku buat apa, aku explain panjang. diorang confused.\n\nlepas aku fokus satu benda, aku jawab satu ayat je. diorang faham terus.\n\nkalau korang kena describe diri korang dalam satu ayat, apa ayat dia?",
+    # 12
+    "aku masih buat project yang takde siapa bayar. sampai sekarang.\n\nbukan sebab takde kerja. tapi itu cara aku kekal sharp. takde constraint, boleh explore sesuka hati. dari situ aku jumpa teknik baru, tools baru. bila apply kat kerja client, quality naik.\n\nkalau tunggu client dulu baru nak belajar, kau selalu satu langkah di belakang.\n\nkorang last buat personal project bila?",
+    # 13
+    "orang selalu kata jangan buat kerja yang kau suka, nanti hilang minat.\n\naku tak setuju.\n\naku buat kerja yang aku minat dari dulu sampai sekarang. sebab tu aku boleh buat lagi baik dari orang yang buat sebab duit je.\n\nminat tak hilang bila kau buat kerja. minat hilang bila kau buat kerja yang salah.\n\nkorang team mana: kerja ikut minat, atau minat jangan jadikan kerja?",
+    # 14
+    "hampir semua client aku datang dari referral.\n\nkawan refer. company lama refer. orang yang pernah tengok kerja aku refer. aku tak pergi cari pun.\n\ntapi masalahnya referral tak consistent. ada bulan banyak, ada bulan senyap. dan aku tak boleh control bila diorang datang.\n\nkorang punya client selalu datang dari mana?",
+    # 15
+    "setiap project aku buat lebih dari yang client minta. bukan untuk client tu. untuk aku sendiri.\n\nsebab hasil kerja tu bukan sekadar deliverable. dia jadi portfolio aku, bahan cerita aku, sebab orang refer aku.\n\nclient bayar sekali je. tapi portfolio yang terhasil, aku guna berkali kali untuk tahun tahun akan datang. effort lebih tu bukan free work. tu investment.\n\nkorang siapkan kerja sekadar siap, atau sampai jadi showcase?",
+    # 16
+    "benda paling aku struggle sampai sekarang bukan skill.\n\nbukan cari client. bukan bayaran. tapi consistency.\n\nada masa aku productive gila, siap kerja berlambak. ada masa aku procrastinate sampai deadline dah dekat baru gerak.\n\nkorang struggle dengan apa paling banyak? jom confess sini.",
+    # 17
+    "kalau boleh balik masa, aku nak cakap satu benda je dengan diri sendiri yang dulu.\n\nfokus lagi awal.\n\nbukan maksud tak boleh explore. explore kena. tapi kena ada satu anchor yang ikat semua tu. tanpa anchor, kau spend bertahun buat banyak benda tapi tak pergi mana.\n\nkorang nak cakap apa dengan diri sendiri 5 tahun lepas?",
+    # 18
+    "aku share pasal freelance bukan sebab dah berjaya. aku masih dalam proses.\n\nmula dengan kerja free upah roti dan air. interview bawa hardisk. bertahun buat macam macam sampai portfolio bersepah. perlahan lahan jumpa fokus. tapi consistency masih jadi cabaran.\n\nramai aku rasa sama situasi. skill ada, minat ada, tapi tak tahu arah. kita figure out sama sama.\n\napa benda paling besar korang struggle sekarang?",
+    # 19
+    "spark aku datang dari dua benda yang berlaku serentak.\n\nmak aku cikgu. ada laptop. aku explore teknologi, tengok apa yang boleh aku hasilkan dengan benda tu.\n\nmakcik aku belajar multimedia. aku tengok dia buat kerja.\n\nvideo pertama aku buat untuk sepupu sendiri. guna je tools yang ada dalam laptop tu. tak tunggu semua cukup dulu.\n\ncara orang dapat spark memang beza. tapi cara guna dia sama: mula dengan apa yang ada depan mata.\n\nkorang punya spark datang dari mana? aku nak baca semua.",
+    # 20
+    "aku pernah ambil kerja murah sebab minat sangat nak buat.\n\nbayaran tak seberapa. tapi aku buat lebih 100%. explore tools baru, polish sampai puas hati sendiri.\n\nkerja tu jadi showcase terbaik dalam portfolio aku. dan dari situ dapat tawaran lagi tinggi.\n\npernah tak korang buat kerja yang usaha lebih dari bayaran? berbaloi ke?",
+    # 21
+    "dulu bila client reject kerja tanpa sebab, aku terus refund. malas nak pening.\n\ntapi lepas tu aku belajar: document semua benda. setiap progress, setiap request, setiap approval. dalam whatsapp, email. project besar aku siap buat website khas untuk client tengok progress.\n\nsekarang kalau client bantah, aku tunjuk record je. tak payah gaduh.\n\nkorang pernah kena client macam ni? macam mana handle?",
+]
 
-        # cerita: mula suka-suka
-        "malam": "aku tak start freelance dengan target nak jadi fulltime pun.\n\njust nak duit lebih. buat bila ada masa lapang. takde tekanan.\n\ntapi sebab buat dengan enjoy, kerja jadi lagi baik. client happy, dapat refer ke orang lain.\n\nkorang start freelance sebab apa? duit, minat, atau terpaksa?",
-    },
+def my_now():
+    return datetime.utcnow() + timedelta(hours=8)
 
-    "Tuesday": {
-        # cerita: interview bawa hardisk
-        "pagi": "interview kerja pertama aku, aku bawa hardisk.\n\ntakde resume cantik. takde sijil nak tunjuk. aku terus tunjuk kerja dari situ.\n\ndiorang tengok, diam sekejap, terus tanya bila boleh start.\n\nkorang pernah dapat kerja sebab portfolio, bukan sebab resume?",
+def load_logs():
+    if not os.path.exists(LOG_FILE):
+        return []
+    with open(LOG_FILE) as f:
+        try:
+            return json.load(f)
+        except:
+            return []
 
-        # cerita: sijil decoration
-        "malam": "aku tak pernah dapat kerja sebab sijil.\n\nselalu sebab orang tengok kerja aku terus. sijil aku ada. tapi tak pernah jadi faktor pun.\n\nkalau kau ada kerja yang boleh tunjuk, sijil jadi decoration je.\n\nsetuju ke tak? aku nak dengar pendapat korang.",
-    },
-
-    "Wednesday": {
-        # cerita: minat banyak benda
-        "pagi": "masalah aku dulu: aku minat buat banyak benda.\n\nanimation, game, design, web. semua aku cuba. semua aku ambil kalau ada orang tanya.\n\nrasa macam bagus sebab serba boleh. tapi bila orang tanya aku buat apa, aku jawab freelancer je. generic. tak ada siapa ingat.\n\nkorang jenis fokus satu benda ke minat banyak benda macam aku?",
-
-        # cerita: portfolio bersepah
-        "malam": "portfolio aku dulu bersepah.\n\nbuat macam-macam, letak semua sekali, nampak takde arah. macam kedai yang jual segalanya tapi takde specialty.\n\nclient yang datang pun random. nak market diri sendiri pun tak tahu nak highlight apa.\n\nkorang pernah tengok balik portfolio sendiri dan rasa macam ni?",
-    },
-
-    "Thursday": {
-        # cerita: kerja murah tapi buat 100%
-        "pagi": "aku pernah ambil kerja murah sebab minat sangat nak buat.\n\nbayaran tak seberapa. tapi aku buat lebih 100%. explore tools baru, polish sampai puas hati sendiri.\n\nkerja tu jadi showcase terbaik dalam portfolio aku. dan dari situ dapat tawaran lagi tinggi.\n\npernah tak korang buat kerja yang usaha lebih dari bayaran? berbaloi ke?",
-
-        # cerita: referral tak consistent
-        "malam": "hampir semua client aku datang dari referral.\n\nkawan refer. company lama refer. orang yang pernah tengok kerja aku refer. aku tak pergi cari pun.\n\ntapi masalahnya referral tak consistent. ada bulan banyak, ada bulan senyap. dan aku tak boleh control bila diorang datang.\n\nkorang punya client selalu datang dari mana?",
-    },
-
-    "Friday": {
-        # cerita: minat jadi kelebihan
-        "pagi": "sebab aku minat, aku tak rasa penat walaupun kerja lama.\n\norang lain kena paksa buat overtime. aku buat overtime sendiri sebab nak polish lagi.\n\nbukan semua orang ada benda tu. dan bila client nampak perbezaan tu, diorang ingat kau.\n\nkorang pernah tak sedar dah kerja berjam-jam sebab seronok?",
-
-        # cerita: known for one thing
-        "malam": "perasaan bila orang mula associate nama kau dengan satu benda, lain macam sikit.\n\ndulu orang tanya aku buat apa, aku explain panjang. diorang confused.\n\nlepas aku fokus satu benda, aku jawab satu ayat je. diorang faham terus.\n\nkalau korang kena describe diri korang dalam satu ayat, apa ayat dia?",
-    },
-
-    "Saturday": {
-        # cerita: hot take pasal minat
-        "pagi": "orang selalu kata jangan buat kerja yang kau suka, nanti hilang minat.\n\naku tak setuju.\n\naku buat kerja yang aku minat dari dulu sampai sekarang. sebab tu aku boleh buat lagi baik dari orang yang buat sebab duit je.\n\nminat tak hilang bila kau buat kerja. minat hilang bila kau buat kerja yang salah.\n\nkorang team mana: kerja ikut minat, atau minat jangan jadikan kerja?",
-
-        # cerita: struggle consistency
-        "malam": "benda paling aku struggle sampai sekarang bukan skill.\n\nbukan cari client. bukan bayaran. tapi consistency.\n\nada masa aku productive gila, siap kerja berlambak. ada masa aku procrastinate sampai deadline dah dekat baru gerak.\n\nkorang struggle dengan apa paling banyak? jom confess sini.",
-    },
-
-    "Sunday": {
-        # cerita: nasihat untuk diri sendiri dulu
-        "pagi": "kalau boleh balik masa, aku nak cakap satu benda je dengan diri sendiri yang dulu.\n\nfokus lagi awal.\n\nbukan maksud tak boleh explore. explore kena. tapi kena ada satu anchor yang ikat semua tu. tanpa anchor, kau spend bertahun buat banyak benda tapi tak pergi mana.\n\nkorang nak cakap apa dengan diri sendiri 5 tahun lepas?",
-
-        # cerita: spark — closing minggu
-        "malam": "spark aku datang dari dua benda yang berlaku serentak.\n\nmak aku cikgu. ada laptop. aku explore teknologi, tengok apa yang boleh aku hasilkan dengan benda tu.\n\nmakcik aku belajar multimedia. aku tengok dia buat kerja, tengok benda yang dia belajar.\n\nvideo pertama aku buat untuk sepupu sendiri. guna je tools yang ada dalam laptop tu. tak tunggu semua cukup dulu.\n\ncara orang dapat spark memang beza. tapi cara guna dia sama: mula dengan apa yang ada depan mata.\n\nkorang punya spark datang dari mana? aku nak baca semua.",
-    },
-}
-
-def save_log(text, slot, day, status, post_id=None):
-    import json
-    log_file = "log.json"
-    logs = []
-    if os.path.exists(log_file):
-        with open(log_file) as f:
-            try:
-                logs = json.load(f)
-            except:
-                logs = []
+def save_log(text, slot, status, idx, post_id=None):
+    logs = load_logs()
+    now = my_now()
     entry = {
         "time": datetime.utcnow().isoformat(),
-        "day": day,
+        "date": now.strftime("%Y-%m-%d"),
+        "day": now.strftime("%A"),
         "slot": slot,
+        "idx": idx,
         "text": text,
         "status": status
     }
     if post_id:
         entry["post_id"] = post_id
     logs.append(entry)
-    with open(log_file, "w") as f:
+    with open(LOG_FILE, "w") as f:
         json.dump(logs, f, ensure_ascii=False, indent=2)
 
-def post(text, slot, day):
+def already_posted_today(slot, logs):
+    today = my_now().strftime("%Y-%m-%d")
+    return any(l.get("date") == today and l.get("slot") == slot and l.get("status") == "ok" for l in logs)
+
+def next_idx(logs):
+    posted = {l.get("idx") for l in logs if l.get("status") == "ok" and l.get("idx") is not None}
+    for i in range(len(POSTS_QUEUE)):
+        if i not in posted:
+            return i
+    return None
+
+def post(text, slot, idx):
     r = requests.post(f"https://graph.threads.net/v1.0/{USER_ID}/threads", data={
         "media_type": "TEXT",
         "text": text,
@@ -97,7 +104,7 @@ def post(text, slot, day):
     cid = r.json().get("id")
     if not cid:
         print(f"Gagal create: {r.json()}")
-        save_log(text, slot, day, "fail")
+        save_log(text, slot, "fail", idx)
         return
     time.sleep(5)
     r2 = requests.post(f"https://graph.threads.net/v1.0/{USER_ID}/threads_publish", data={
@@ -106,34 +113,23 @@ def post(text, slot, day):
     })
     post_id = r2.json().get("id")
     if post_id:
-        print(f"[{datetime.now()}] Berjaya post — {day} {slot}")
-        save_log(text, slot, day, "ok", post_id)
+        print(f"[{datetime.now()}] Berjaya post — queue #{idx+1} ({slot})")
+        save_log(text, slot, "ok", idx, post_id)
     else:
         print(f"Gagal publish: {r2.json()}")
-        save_log(text, slot, day, "fail")
+        save_log(text, slot, "fail", idx)
 
-def already_posted(slot, day):
-    import json
-    log_file = "log.json"
-    if not os.path.exists(log_file):
-        return False
-    with open(log_file) as f:
-        try:
-            logs = json.load(f)
-        except:
-            return False
-    return any(l.get("slot") == slot and l.get("day") == day and l.get("status") == "ok" for l in logs)
-
-today = datetime.now().strftime("%A")
 slot = sys.argv[1] if len(sys.argv) > 1 else None
 
-if not slot:
+if slot not in ("pagi", "malam"):
     print("Sila masukkan slot: pagi / malam")
-elif today not in POSTS:
-    print(f"Tiada post untuk hari {today}")
-elif slot not in POSTS[today]:
-    print(f"Slot '{slot}' tidak wujud.")
-elif already_posted(slot, today):
-    print(f"Slot '{slot}' untuk {today} dah dipost hari ni — skip.")
 else:
-    post(POSTS[today][slot], slot, today)
+    logs = load_logs()
+    if already_posted_today(slot, logs):
+        print(f"Slot '{slot}' hari ni dah dipost — skip.")
+    else:
+        idx = next_idx(logs)
+        if idx is None:
+            print("Queue habis — tiada content baru untuk dipost.")
+        else:
+            post(POSTS_QUEUE[idx], slot, idx)

@@ -76,7 +76,7 @@
 </head>
 <body>
   <h1>Threads Auto Post</h1>
-  <p class="handle">@fsalz.wfh — auto posting sistem <span style="opacity:.35;font-size:10px">v3.1</span></p>
+  <p class="handle">@fsalz.wfh — auto posting sistem <span style="opacity:.35;font-size:10px">v5.0</span></p>
 
   <div class="next-box">
     <div>
@@ -123,79 +123,33 @@
   <div id="log"><div class="empty">memuatkan...</div></div>
 
   <script>
-    const POSTS = {
-      Monday:    { pagi: "upah pertama aku: roti dan air. client pertama tu kawan aku sendiri. dia takde duit. aku pun tak kisah, sebab aku just nak buat kerja tu. tapi dari kerja tu aku ada portfolio pertama aku. satu contoh je. cukup untuk dapat client seterusnya. korang punya first job dulu macam mana?", malam: "aku tak start freelance dengan target nak jadi fulltime pun. just nak duit lebih. buat bila ada masa lapang. takde tekanan. tapi sebab buat dengan enjoy, kerja jadi lagi baik. client happy, dapat refer ke orang lain. korang start freelance sebab apa? duit, minat, atau terpaksa?" },
-      Tuesday:   { pagi: "interview kerja pertama aku, aku bawa hardisk. takde resume cantik. takde sijil nak tunjuk. aku terus tunjuk kerja dari situ. diorang tengok, diam sekejap, terus tanya bila boleh start. korang pernah dapat kerja sebab portfolio, bukan sebab resume?", malam: "aku tak pernah dapat kerja sebab sijil. selalu sebab orang tengok kerja aku terus. sijil aku ada. tapi tak pernah jadi faktor pun. kalau kau ada kerja yang boleh tunjuk, sijil jadi decoration je. setuju ke tak? aku nak dengar pendapat korang." },
-      Wednesday: { pagi: "masalah aku dulu: aku minat buat banyak benda. animation, game, design, web. semua aku cuba. semua aku ambil kalau ada orang tanya. rasa macam bagus sebab serba boleh. tapi bila orang tanya aku buat apa, aku jawab freelancer je. generic. tak ada siapa ingat. korang jenis fokus satu benda ke minat banyak benda macam aku?", malam: "portfolio aku dulu bersepah. buat macam-macam, letak semua sekali, nampak takde arah. macam kedai yang jual segalanya tapi takde specialty. client yang datang pun random. nak market diri sendiri pun tak tahu nak highlight apa. korang pernah tengok balik portfolio sendiri dan rasa macam ni?" },
-      Thursday:  { pagi: "aku pernah ambil kerja murah sebab minat sangat nak buat. bayaran tak seberapa. tapi aku buat lebih 100%. explore tools baru, polish sampai puas hati sendiri. kerja tu jadi showcase terbaik dalam portfolio aku. dan dari situ dapat tawaran lagi tinggi. pernah tak korang buat kerja yang usaha lebih dari bayaran? berbaloi ke?", malam: "hampir semua client aku datang dari referral. kawan refer. company lama refer. orang yang pernah tengok kerja aku refer. aku tak pergi cari pun. tapi masalahnya referral tak consistent. ada bulan banyak, ada bulan senyap. korang punya client selalu datang dari mana?" },
-      Friday:    { pagi: "sebab aku minat, aku tak rasa penat walaupun kerja lama. orang lain kena paksa buat overtime. aku buat overtime sendiri sebab nak polish lagi. bukan semua orang ada benda tu. dan bila client nampak perbezaan tu, diorang ingat kau. korang pernah tak sedar dah kerja berjam-jam sebab seronok?", malam: "perasaan bila orang mula associate nama kau dengan satu benda, lain macam sikit. dulu orang tanya aku buat apa, aku explain panjang. diorang confused. lepas aku fokus satu benda, aku jawab satu ayat je. diorang faham terus. kalau korang kena describe diri korang dalam satu ayat, apa ayat dia?" },
-      Saturday:  { pagi: "orang selalu kata jangan buat kerja yang kau suka, nanti hilang minat. aku tak setuju. aku buat kerja yang aku minat dari dulu sampai sekarang. sebab tu aku boleh buat lagi baik dari orang yang buat sebab duit je. minat tak hilang bila kau buat kerja. minat hilang bila kau buat kerja yang salah. korang team mana?", malam: "benda paling aku struggle sampai sekarang bukan skill. bukan cari client. bukan bayaran. tapi consistency. ada masa aku productive gila, siap kerja berlambak. ada masa aku procrastinate sampai deadline dah dekat baru gerak. korang struggle dengan apa paling banyak? jom confess sini." },
-      Sunday:    { pagi: "kalau boleh balik masa, aku nak cakap satu benda je dengan diri sendiri yang dulu. fokus lagi awal. bukan maksud tak boleh explore. explore kena. tapi kena ada satu anchor yang ikat semua tu. tanpa anchor, kau spend bertahun buat banyak benda tapi tak pergi mana. korang nak cakap apa dengan diri sendiri 5 tahun lepas?", malam: "spark aku datang dari dua benda yang berlaku serentak. mak aku cikgu. ada laptop. aku explore teknologi, tengok apa yang boleh aku hasilkan dengan benda tu. makcik aku belajar multimedia. aku tengok dia buat kerja. video pertama aku buat untuk sepupu sendiri. guna je tools yang ada dalam laptop tu. tak tunggu semua cukup dulu. korang punya spark datang dari mana? aku nak baca semua." }
-    };
-
-    const THREADS = {
-      Monday: {
-        hook: "cara aku dapat client pertama: buat kerja free untuk kawan, upah roti dan air. ni cerita penuh dia. 👇",
-        replies: [
-          "masa tu aku takde portfolio langsung. kawan aku perlukan tolong, dia takde bajet. aku buat je. bukan sebab strategik pun, sebab aku memang nak buat kerja tu. siap, aku simpan hasil dia elok-elok.",
-          "hasil kerja tu jadi satu-satunya contoh yang aku ada. bila orang lain tanya boleh tengok kerja kau tak, aku ada benda nak tunjuk. dari situ kawan refer ke kawan dia, kawan dia refer ke company. bola bergolek.",
-          "lesson dia bukan kerja free tu bagus. lesson dia: kau perlukan satu contoh kerja yang boleh tunjuk. macam mana kau dapat contoh tu, terpulang. tapi tanpa dia, semua pintu tertutup. korang dapat contoh kerja pertama korang macam mana?",
-        ]
-      },
-      Tuesday: {
-        hook: "client tanya harga, aku tak bagi. aku ajak meeting dulu. sebab tu aku boleh charge lebih tinggi. 👇",
-        replies: [
-          "aku takde rate card khusus. sebab setiap client masalah dia lain. bila kau bagi harga sebelum faham masalah diorang, kau letak nilai kerja sendiri secara buta. jadi aku ajak online meeting 15 sampai 30 minit. aku panggil dia discovery call.",
-          "dalam call tu aku buat dua benda serentak. present hasil kerja aku betul-betul, dan study business diorang. tanya apa yang aku nak tanya. dari situ trust terbina sebelum harga pun disebut lagi.",
-          "habis meeting, aku terus buat custom quotation ikut apa yang aku belajar masa call tu. bukan template. client rasa quotation tu memang untuk diorang, sebab memang pun. peluang dapat project dengan cara ni sangat tinggi. korang bagi harga terus, atau ajak meeting dulu?",
-        ]
-      },
-      Wednesday: {
-        hook: "bertahun aku buat animation, design, web, game. lepas tu aku jumpa satu benda yang ikat semua tu sekali. 👇",
-        replies: [
-          "masa buat semua benda tu, setiap client kenal aku beza. ada yang ingat aku orang design. ada yang ingat aku orang web. aku sendiri tak tahu nak describe diri sebagai apa. portfolio pun bersepah.",
-          "aku tak terus jumpa jawapan. aku perhatikan pattern: apa yang aku paling enjoy buat, dan apa yang orang paling kerap minta dari aku. dari dua benda tu baru nampak satu servis yang boleh gabung semua minat aku.",
-          "ambil masa nak fokus. rasa rugi nak tinggalkan yang lain. tapi sekarang, asal orang sebut servis tu, terus ingat nama aku. bukan sebab aku seorang je boleh buat. sebab aku konsisten dengan satu benda tu. korang dah jumpa benda korang, atau masih explore?",
-        ]
-      },
-      Thursday: {
-        hook: "dulu client reject kerja aku tanpa sebab, aku terus refund. sekarang tak lagi. ni apa yang aku belajar. 👇",
-        replies: [
-          "masa awal dulu aku jenis malas nak pening kepala. client tak puas hati, refund je, move on ke next project. rasa macam professional. tapi sebenarnya aku tengah ajar client macam tu yang perangai camtu boleh dapat kerja free.",
-          "lepas tu aku mula document semua benda. setiap progress, setiap request client, setiap approval. dalam whatsapp, dalam email. untuk project besar aku siap buat website khas untuk client tengok progress dan semua details.",
-          "sekarang kalau client bantah, aku tak perlu argue pun. aku tunjuk record je. ni yang kita agree, ni yang kau approve, ni yang berubah. dokumentasi bukan untuk menang gaduh. dia buat kau tak payah gaduh langsung. korang pernah kena client macam ni? macam mana handle?",
-        ]
-      },
-      Friday: {
-        hook: "setiap project aku buat lebih dari yang client minta. bukan untuk client tu. untuk aku sendiri. 👇",
-        replies: [
-          "sebab hasil kerja tu bukan sekadar deliverable untuk client. dia jadi portfolio aku, bahan cerita aku, dan sebab orang refer aku ke orang lain. kalau siap sekadar siap, kau dapat bayaran je. habis situ.",
-          "tapi kalau siap sampai tahap showcase, kau dapat tiga benda: bayaran, portfolio yang kuat, dan client yang teruja nak cerita pasal kau kat orang lain. sebab tu hampir semua client aku sekarang datang dari referral.",
-          "cara fikir dia mudah: client bayar untuk kerja tu sekali je. tapi portfolio yang terhasil, kau guna berkali-kali untuk tahun-tahun akan datang. effort lebih tu bukan free work. tu investment. korang siapkan kerja sekadar siap, atau sampai jadi showcase?",
-        ]
-      },
-      Saturday: {
-        hook: "aku masih buat project yang takde siapa bayar. sampai sekarang. dan ni sebab dia. 👇",
-        replies: [
-          "bukan sebab takde kerja. ada je. tapi personal project adalah cara aku kekal sharp. bila buat untuk diri sendiri, takde constraint. boleh explore sesuka hati. sempena raya buat design sendiri. jumpa tools baru terus cuba.",
-          "dari personal project la aku selalu jumpa teknik baru, tools baru, cara baru selesaikan masalah. lepas tu bila apply kat kerja client, quality naik. client tak tahu pun benda tu datang dari project suka-suka aku.",
-          "kalau tunggu client dulu baru nak belajar benda baru, kau akan selalu satu langkah di belakang. buat dulu untuk diri sendiri. client datang kemudian. korang last buat personal project bila? tunjuk sini kalau ada.",
-        ]
-      },
-      Sunday: {
-        hook: "aku share pasal freelance bukan sebab aku dah berjaya. aku share sebab aku masih dalam proses. 👇",
-        replies: [
-          "mula dengan kerja free upah roti dan air. interview bawa hardisk. bertahun buat macam-macam sampai tak tahu describe diri sendiri. portfolio bersepah. client datang dari referral je, tak boleh control bila.",
-          "perlahan-lahan jumpa fokus. belajar buat discovery call. belajar document semua benda. belajar buat setiap project jadi showcase. tapi consistency masih jadi cabaran sampai sekarang.",
-          "aku rasa ramai yang sama situasi dengan aku. skill ada, minat ada, tapi tak tahu arah mana atau macam mana nak consistent. kita figure out sama-sama. apa benda paling besar korang struggle sekarang? reply, aku baca semua.",
-        ]
-      },
-    };
+    const QUEUE = [
+      "upah pertama aku: roti dan air.\n\nclient pertama tu kawan aku sendiri. dia takde duit. aku pun tak kisah, sebab aku just nak buat kerja tu.\n\ntapi dari kerja tu aku ada portfolio pertama aku. satu contoh je. cukup untuk dapat client seterusnya.\n\nkorang punya first job dulu macam mana?",
+      "interview kerja pertama aku, aku bawa hardisk.\n\ntakde resume cantik. takde sijil nak tunjuk. aku terus tunjuk kerja dari situ.\n\ndiorang tengok, diam sekejap, terus tanya bila boleh start.\n\nkorang pernah dapat kerja sebab portfolio, bukan sebab resume?",
+      "aku tak start freelance dengan target nak jadi fulltime pun.\n\njust nak duit lebih. buat bila ada masa lapang. takde tekanan.\n\ntapi sebab buat dengan enjoy, kerja jadi lagi baik. client happy, dapat refer ke orang lain.\n\nkorang start freelance sebab apa? duit, minat, atau terpaksa?",
+      "aku perasan ada dua jenis client.\n\nsatu, yang nak jumpa depan depan atau kat ofis. dua, yang okay je meeting online.\n\npengalaman aku: client yang nak jumpa depan depan ni biasanya susah nak close. aku pun tak tahu kenapa. dah la keluar kos, duit minyak, masa perjalanan.\n\nsekarang semua meeting aku buat online dulu. jimat masa, dan aku boleh present hasil kerja dengan lebih baik atas skrin. lepas close baru decide nak jumpa ke tak. servis digital kan.\n\nkorang pernah perasan pattern ni ke?",
+      "masalah aku dulu: aku minat buat banyak benda.\n\nanimation, game, design, web. semua aku cuba. semua aku ambil kalau ada orang tanya.\n\nrasa macam bagus sebab serba boleh. tapi bila orang tanya aku buat apa, aku jawab freelancer je. generic. tak ada siapa ingat.\n\nkorang jenis fokus satu benda ke minat banyak benda macam aku?",
+      "aku tak pernah dapat kerja sebab sijil.\n\nselalu sebab orang tengok kerja aku terus. sijil aku ada. tapi tak pernah jadi faktor pun.\n\nkalau kau ada kerja yang boleh tunjuk, sijil jadi decoration je.\n\nsetuju ke tak? aku nak dengar pendapat korang.",
+      "client tanya harga, aku tak bagi terus.\n\naku takde rate card. aku ajak online meeting 15 sampai 30 minit, aku panggil discovery call. masa tu aku present hasil kerja betul betul, sambil study business diorang.\n\nhabis meeting aku hantar custom quotation ikut apa yang aku belajar. bukan template.\n\ntrust dah terbina sebelum harga disebut. peluang dapat project sangat tinggi.\n\nkorang bagi harga terus atau meeting dulu?",
+      "benda pelik yang aku belajar: client yang bayar mahal, lagi senang layan.\n\ndiorang describe details, tahu apa yang diorang nak. kerja jadi mudah sebab arah dah jelas.\n\nclient yang murah pulak selalunya baru nak start. serah kerja tanpa details. lepas siap baru demand macam macam, dan asyik berubah.\n\nharga murah tak bermaksud kerja senang. selalunya sebaliknya.\n\nkorang pernah kena tak? client paling murah, kerenah paling banyak?",
+      "sebab aku minat, aku tak rasa penat walaupun kerja lama.\n\norang lain kena paksa buat overtime. aku buat overtime sendiri sebab nak polish lagi.\n\nbukan semua orang ada benda tu. dan bila client nampak perbezaan tu, diorang ingat kau.\n\nkorang pernah tak sedar dah kerja berjam-jam sebab seronok?",
+      "bertahun aku buat animation, design, web, game.\n\nsetiap client kenal aku beza. portfolio bersepah. aku sendiri tak tahu describe diri sebagai apa.\n\nlepas tu aku perhatikan dua benda: apa yang aku paling enjoy, dan apa yang orang paling kerap minta. dari situ jumpa satu servis yang gabung semua minat aku.\n\nsekarang asal orang sebut servis tu, terus ingat nama aku.\n\nkorang dah jumpa benda korang atau masih explore?",
+      "perasaan bila orang mula associate nama kau dengan satu benda, lain macam sikit.\n\ndulu orang tanya aku buat apa, aku explain panjang. diorang confused.\n\nlepas aku fokus satu benda, aku jawab satu ayat je. diorang faham terus.\n\nkalau korang kena describe diri korang dalam satu ayat, apa ayat dia?",
+      "aku masih buat project yang takde siapa bayar. sampai sekarang.\n\nbukan sebab takde kerja. tapi itu cara aku kekal sharp. takde constraint, boleh explore sesuka hati. dari situ aku jumpa teknik baru, tools baru. bila apply kat kerja client, quality naik.\n\nkalau tunggu client dulu baru nak belajar, kau selalu satu langkah di belakang.\n\nkorang last buat personal project bila?",
+      "orang selalu kata jangan buat kerja yang kau suka, nanti hilang minat.\n\naku tak setuju.\n\naku buat kerja yang aku minat dari dulu sampai sekarang. sebab tu aku boleh buat lagi baik dari orang yang buat sebab duit je.\n\nminat tak hilang bila kau buat kerja. minat hilang bila kau buat kerja yang salah.\n\nkorang team mana: kerja ikut minat, atau minat jangan jadikan kerja?",
+      "hampir semua client aku datang dari referral.\n\nkawan refer. company lama refer. orang yang pernah tengok kerja aku refer. aku tak pergi cari pun.\n\ntapi masalahnya referral tak consistent. ada bulan banyak, ada bulan senyap. dan aku tak boleh control bila diorang datang.\n\nkorang punya client selalu datang dari mana?",
+      "setiap project aku buat lebih dari yang client minta. bukan untuk client tu. untuk aku sendiri.\n\nsebab hasil kerja tu bukan sekadar deliverable. dia jadi portfolio aku, bahan cerita aku, sebab orang refer aku.\n\nclient bayar sekali je. tapi portfolio yang terhasil, aku guna berkali kali untuk tahun tahun akan datang. effort lebih tu bukan free work. tu investment.\n\nkorang siapkan kerja sekadar siap, atau sampai jadi showcase?",
+      "benda paling aku struggle sampai sekarang bukan skill.\n\nbukan cari client. bukan bayaran. tapi consistency.\n\nada masa aku productive gila, siap kerja berlambak. ada masa aku procrastinate sampai deadline dah dekat baru gerak.\n\nkorang struggle dengan apa paling banyak? jom confess sini.",
+      "kalau boleh balik masa, aku nak cakap satu benda je dengan diri sendiri yang dulu.\n\nfokus lagi awal.\n\nbukan maksud tak boleh explore. explore kena. tapi kena ada satu anchor yang ikat semua tu. tanpa anchor, kau spend bertahun buat banyak benda tapi tak pergi mana.\n\nkorang nak cakap apa dengan diri sendiri 5 tahun lepas?",
+      "aku share pasal freelance bukan sebab dah berjaya. aku masih dalam proses.\n\nmula dengan kerja free upah roti dan air. interview bawa hardisk. bertahun buat macam macam sampai portfolio bersepah. perlahan lahan jumpa fokus. tapi consistency masih jadi cabaran.\n\nramai aku rasa sama situasi. skill ada, minat ada, tapi tak tahu arah. kita figure out sama sama.\n\napa benda paling besar korang struggle sekarang?",
+      "spark aku datang dari dua benda yang berlaku serentak.\n\nmak aku cikgu. ada laptop. aku explore teknologi, tengok apa yang boleh aku hasilkan dengan benda tu.\n\nmakcik aku belajar multimedia. aku tengok dia buat kerja.\n\nvideo pertama aku buat untuk sepupu sendiri. guna je tools yang ada dalam laptop tu. tak tunggu semua cukup dulu.\n\ncara orang dapat spark memang beza. tapi cara guna dia sama: mula dengan apa yang ada depan mata.\n\nkorang punya spark datang dari mana? aku nak baca semua.",
+      "aku pernah ambil kerja murah sebab minat sangat nak buat.\n\nbayaran tak seberapa. tapi aku buat lebih 100%. explore tools baru, polish sampai puas hati sendiri.\n\nkerja tu jadi showcase terbaik dalam portfolio aku. dan dari situ dapat tawaran lagi tinggi.\n\npernah tak korang buat kerja yang usaha lebih dari bayaran? berbaloi ke?",
+      "dulu bila client reject kerja tanpa sebab, aku terus refund. malas nak pening.\n\ntapi lepas tu aku belajar: document semua benda. setiap progress, setiap request, setiap approval. dalam whatsapp, email. project besar aku siap buat website khas untuk client tengok progress.\n\nsekarang kalau client bantah, aku tunjuk record je. tak payah gaduh.\n\nkorang pernah kena client macam ni? macam mana handle?",
+    ];
 
     const SLOTS = [
-      { key: 'pagi',   label: 'Pagi',   hour: 8,  script: 'post_today.py pagi' },
-      { key: 'thread', label: 'Thread', hour: 12, script: 'thread_today.py' },
-      { key: 'malam',  label: 'Malam',  hour: 21, script: 'post_today.py malam' },
+      { key: 'pagi',  label: 'Pagi',  hour: 8 },
+      { key: 'malam', label: 'Malam', hour: 21 },
     ];
 
     const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -207,7 +161,7 @@
     function getNextSlot() {
       const now = getMYTime();
       const totalMs = (now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds()) * 1000;
-      const slotMs = [8*3600, 12*3600, 13*3600, 21*3600].map(s => s * 1000);
+      const slotMs = SLOTS.map(s => s.hour * 3600 * 1000);
       for (let i = 0; i < slotMs.length; i++) {
         if (totalMs < slotMs[i]) {
           return { slot: SLOTS[i], msUntil: slotMs[i] - totalMs };
@@ -253,63 +207,57 @@
 
     function buildSchedule(logs) {
       const now = getMYTime();
-      const { slot: nextSlot } = getNextSlot();
       const cal = document.getElementById('schedule-cal');
 
-      // Build logged map: { "Friday|pagi": "ok", ... }
-      const loggedMap = {};
+      const postedIdx = new Set(logs.filter(l => l.status === 'ok' && l.idx !== undefined).map(l => l.idx));
+      const upcoming = [];
+      for (let i = 0; i < QUEUE.length; i++) {
+        if (!postedIdx.has(i)) upcoming.push({ idx: i, text: QUEUE[i] });
+      }
+      let qPtr = 0;
+
+      const logMap = {};
       logs.forEach(l => {
-        const lMY = new Date(new Date(l.time + (l.time.includes('Z') ? '' : 'Z')).toLocaleString('en-US', { timeZone: 'Asia/Kuala_Lumpur' }));
-        loggedMap[`${DAYS[lMY.getDay()]}|${l.slot}`] = l.status;
+        if (l.date) logMap[l.date + '|' + l.slot] = l;
       });
 
+      const fmtDate = dt => dt.getFullYear() + '-' + String(dt.getMonth()+1).padStart(2,'0') + '-' + String(dt.getDate()).padStart(2,'0');
+
       cal.innerHTML = '';
-      // Show today + next 6 days
       for (let d = 0; d < 7; d++) {
         const date = new Date(now);
         date.setDate(date.getDate() + d);
-        const dayName = DAYS[date.getDay()];
         const isToday = d === 0;
         const dateLabel = date.toLocaleDateString('ms-MY', { weekday: 'long', day: 'numeric', month: 'long' });
 
         let rowsHtml = '';
         SLOTS.forEach(s => {
-          const key = `${dayName}|${s.key}`;
-          const logStatus = loggedMap[key];
-          const isNext = isToday && s.key === nextSlot.key;
+          const logEntry = logMap[fmtDate(date) + '|' + s.key];
           const nowHour = now.getHours();
           const isPast = isToday && (nowHour > s.hour || (nowHour === s.hour && now.getMinutes() > 5));
-
-          let preview;
-          if (s.key === 'thread') {
-            const t = THREADS[dayName];
-            if (t) {
-              preview = `<strong>${t.hook}</strong>` + t.replies.map(r => `<br><br>${r}`).join('');
-            } else { preview = '—'; }
-          } else {
-            preview = POSTS[dayName]?.[s.key] || '—';
-          }
-
-          let rowCls = 'cal-row';
-          let badge = '';
-          let pushBtn = '';
-
           const btnId = `pushbtn-${d}-${s.key}`;
-          if (logStatus === 'ok') {
+          let rowCls = 'cal-row', badge = '', pushBtn = '', preview;
+
+          if (logEntry && logEntry.status === 'ok') {
             rowCls += ' is-done';
-            badge = `<span class="badge b-done">✓</span>`;
-          } else if (logStatus === 'fail') {
-            badge = `<span class="badge b-fail">Gagal</span>`;
-            pushBtn = `<button class="push-btn" id="${btnId}" onclick="triggerSlot('${s.key}','${btnId}')">▶ Retry</button>`;
-          } else if (isNext) {
-            rowCls += ' is-next';
-            badge = `<span class="badge b-next">Seterusnya</span>`;
-            pushBtn = `<button class="push-btn" id="${btnId}" onclick="triggerSlot('${s.key}','${btnId}')">▶ Post sekarang</button>`;
-          } else if (isToday && isPast) {
-            badge = `<span class="badge b-fail">Terlepas</span>`;
-            pushBtn = `<button class="push-btn" id="${btnId}" onclick="triggerSlot('${s.key}','${btnId}')">▶ Post sekarang</button>`;
+            badge = '<span class="badge b-done">✓</span>';
+            preview = logEntry.text;
           } else {
-            pushBtn = `<button class="push-btn" id="${btnId}" onclick="triggerSlot('${s.key}','${btnId}')">▶ Post sekarang</button>`;
+            const item = upcoming[qPtr];
+            if (item) {
+              preview = '<span style="opacity:.45">#' + (item.idx + 1) + '</span> ' + item.text;
+              qPtr++;
+            } else {
+              preview = 'Queue habis. Tambah content baru.';
+            }
+            if (logEntry && logEntry.status === 'fail') {
+              badge = '<span class="badge b-fail">Gagal</span>';
+            } else if (isToday && isPast) {
+              badge = '<span class="badge b-fail">Terlepas</span>';
+            }
+            if (item) {
+              pushBtn = `<button class="push-btn" id="${btnId}" onclick="triggerSlot('${s.key}','${btnId}')">▶ Post sekarang</button>`;
+            }
           }
 
           rowsHtml += `

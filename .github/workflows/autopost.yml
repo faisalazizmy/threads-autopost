@@ -3,12 +3,11 @@ name: Threads Auto Post
 on:
   schedule:
     - cron: '0 0 * * *'   # 8am Malaysia (UTC+8)
-    - cron: '0 4 * * *'   # 12pm Malaysia (thread)
     - cron: '0 13 * * *'  # 9pm Malaysia
   workflow_dispatch:
     inputs:
       force_slot:
-        description: 'Force slot (pagi/thread/tengahari/malam). Kosong = auto detect by hour.'
+        description: 'Force slot (pagi/malam). Kosong = auto detect by hour.'
         required: false
         default: ''
 
@@ -39,17 +38,12 @@ jobs:
           SLOT="${FORCE:-}"
           if [ -z "$SLOT" ]; then
             if [ "$HOUR" = "08" ]; then SLOT="pagi"
-            elif [ "$HOUR" = "12" ]; then SLOT="thread"
             elif [ "$HOUR" = "21" ]; then SLOT="malam"
             else echo "Tiada slot untuk jam $HOUR MYT — skip."; exit 0
             fi
           fi
           echo "Running slot: $SLOT"
-          if [ "$SLOT" = "thread" ]; then
-            python thread_today.py
-          else
-            python post_today.py $SLOT
-          fi
+          python post_today.py $SLOT
 
       - name: Fetch insights
         env:
