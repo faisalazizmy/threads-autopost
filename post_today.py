@@ -11,7 +11,7 @@ LOG_FILE = "log.json"
 
 POSTS_QUEUE = [
     # 1
-    "upah pertama aku: roti dan air.\n\nclient pertama tu kawan aku sendiri. dia takde duit. aku pun tak kisah, sebab aku just nak buat kerja tu.\n\ntapi dari kerja tu aku ada portfolio pertama aku. satu contoh je. cukup untuk dapat client seterusnya.\n\nkorang punya first job dulu macam mana?",
+    "upah project pertama aku roti dan air je.\n\ntapi aku ambil jugak. dan benda paling berharga aku dapat bukan upah tu.\n\nmasa buat project tu aku belajar banyak gila. explore tools, cuba semua benda. walaupun upah roti, aku buat macam project beribu.\n\ndan hasil tu la jadi portfolio pertama aku. sebab dia, project seterusnya datang.\n\nuntuk permulaan, ilmu yang kau dapat lagi berharga dari duit yang kau dapat.\n\nkorang punya first project dulu macam mana?",
     # 2
     "interview kerja pertama aku, aku bawa hardisk.\n\ntakde resume cantik. takde sijil nak tunjuk. aku terus tunjuk kerja dari situ.\n\ndiorang tengok, diam sekejap, terus tanya bila boleh start.\n\nkorang pernah dapat kerja sebab portfolio, bukan sebab resume?",
     # 3
