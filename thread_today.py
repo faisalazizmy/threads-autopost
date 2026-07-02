@@ -9,62 +9,85 @@ USER_ID = "36445274191783117"
 
 THREADS = {
     "Monday": {
-        "hook": "upah pertama aku buat kerja? roti dan air. dan aku buat dengan sepenuh hati.",
+        "hook": "cara aku dapat client pertama: buat kerja free untuk kawan, upah roti dan air. ni cerita penuh dia.",
         "replies": [
-            "kawan aku yang minta tolong. dia tak ada bajet, aku pun tak kisah. masa tu portfolio aku kosong. satu contoh pun takde. kerja free tu jadi satu-satunya contoh yang aku ada.",
-            "dari kerja tu je aku dapat kerja lain. kawan tu refer aku ke kawan dia. kawan dia refer ke tempat lain. bola mula bergolek dari satu kerja yang upahnya roti dan air.",
-            "benda yang aku belajar: first job bukan pasal bayaran. pasal kau ada sesuatu untuk tunjuk bila orang tanya ada contoh kerja tak. kalau takde, susah nak maju. kalau ada satu pun, tu dah cukup untuk start.",
+            "masa tu aku takde portfolio langsung. kawan aku perlukan tolong, dia takde bajet. aku buat je. bukan sebab strategik pun, sebab aku memang nak buat kerja tu. siap, aku simpan hasil dia elok-elok.",
+            "hasil kerja tu jadi satu-satunya contoh yang aku ada. bila orang lain tanya boleh tengok kerja kau tak, aku ada benda nak tunjuk. dari situ kawan refer ke kawan dia, kawan dia refer ke company. bola bergolek.",
+            "lesson dia bukan kerja free tu bagus. lesson dia: kau perlukan satu contoh kerja yang boleh tunjuk. macam mana kau dapat contoh tu, terpulang. tapi tanpa dia, semua pintu tertutup.\n\nkorang dapat contoh kerja pertama korang macam mana?",
         ]
     },
     "Tuesday": {
-        "hook": "aku pergi interview kerja pertama aku dengan bawa hardisk. takde resume cantik. takde sijil nak tunjuk.",
+        "hook": "client tanya harga, aku tak bagi. aku ajak meeting dulu. sebab tu aku boleh charge lebih tinggi.",
         "replies": [
-            "aku prepare benda lain je masa tu. kumpul semua kerja yang pernah aku buat, masukkan dalam hardisk. bukan banyak pun. tapi ada.",
-            "masa interview, aku tak banyak cakap pasal background. aku terus tunjuk kerja dalam hardisk. diorang tengok, diam sekejap, pastu tanya bila boleh start.",
-            "tu la kali pertama aku sedar. orang yang nak hire kau tak kisah sangat kau belajar kat mana atau result exam berapa. diorang nak tengok kau boleh buat apa. portfolio tu bahasa yang semua orang faham.",
+            "aku takde rate card khusus. sebab setiap client masalah dia lain. bila kau bagi harga sebelum faham masalah diorang, kau letak nilai kerja sendiri secara buta. jadi aku ajak online meeting 15 sampai 30 minit. aku panggil dia discovery call.",
+            "dalam call tu aku buat dua benda serentak. present hasil kerja aku betul-betul, dan study business diorang. tanya apa yang aku nak tanya. dari situ trust terbina sebelum harga pun disebut lagi.",
+            "habis meeting, aku terus buat custom quotation ikut apa yang aku belajar masa call tu. bukan template. client rasa quotation tu memang untuk diorang, sebab memang pun. peluang dapat project dengan cara ni sangat tinggi.\n\nkorang bagi harga terus, atau ajak meeting dulu?",
         ]
     },
     "Wednesday": {
-        "hook": "dulu aku tak tahu nak describe diri aku sebagai apa. design ke, web ke, animation ke, game ke. semua aku buat.",
+        "hook": "bertahun aku buat animation, design, web, game. lepas tu aku jumpa satu benda yang ikat semua tu sekali.",
         "replies": [
-            "bila orang tanya kau buat apa, aku cakap je freelancer. sebab aku sendiri pun tak tahu nak explain lebih. ada masa buat design, ada masa buat web, ada masa buat animation. ambil je apa yang datang.",
-            "masalahnya setiap client kenal aku beza. ada yang ingat aku orang design. ada yang ingat aku orang web. takde seorang pun yang ada gambaran penuh pasal apa yang aku sebenarnya buat.",
-            "dan bila nak promote diri sendiri pun susah. nak letak apa dalam bio? nak highlight kerja mana dulu? portfolio nampak bersepah sebab memang bersepah. ni masalah yang ramai freelancer dengan minat banyak benda hadapi tapi jarang cakap pasal.",
+            "masa buat semua benda tu, setiap client kenal aku beza. ada yang ingat aku orang design. ada yang ingat aku orang web. aku sendiri tak tahu nak describe diri sebagai apa. portfolio pun bersepah.",
+            "aku tak terus jumpa jawapan. aku perhatikan pattern: apa yang aku paling enjoy buat, dan apa yang orang paling kerap minta dari aku. dari dua benda tu baru nampak satu servis yang boleh gabung semua minat aku.",
+            "ambil masa nak fokus. rasa rugi nak tinggalkan yang lain. tapi sekarang, asal orang sebut servis tu, terus ingat nama aku. bukan sebab aku seorang je boleh buat. sebab aku konsisten dengan satu benda tu.\n\nkorang dah jumpa benda korang, atau masih explore?",
         ]
     },
     "Thursday": {
-        "hook": "aku pernah buat kerja yang bayarannya tak seberapa tapi aku habiskan masa lagi banyak dari yang sepatutnya.",
+        "hook": "dulu client reject kerja aku tanpa sebab, aku terus refund. sekarang tak lagi. ni apa yang aku belajar.",
         "replies": [
-            "client tu bayar murah. aku terima sebab aku genuinely minat nak buat projek tu. lepas terima, aku cuba tools yang dah lama nak explore. polish sampai rasa puas hati sendiri, bukan sekadar cukup-cukup je.",
-            "client dapat hasil lagi bagus dari expectation diorang. aku dapat experience dari tools baru yang aku explore. dan kerja tu jadi salah satu yang paling kuat dalam portfolio aku.",
-            "ramai kata jangan jual murah. aku faham logic tu. tapi ada situasi di mana kerja bagi kau lebih dari sekadar duit. kau kena tahu bezakan mana yang jual diri, mana yang invest dalam diri sendiri.",
+            "masa awal dulu aku jenis malas nak pening kepala. client tak puas hati, refund je, move on ke next project. rasa macam professional. tapi sebenarnya aku tengah ajar client macam tu yang perangai camtu boleh dapat kerja free.",
+            "lepas tu aku mula document semua benda. setiap progress, setiap request client, setiap approval. dalam whatsapp, dalam email. untuk project besar aku siap buat website khas untuk client tengok progress dan semua details.",
+            "sekarang kalau client bantah, aku tak perlu argue pun. aku tunjuk record je. ni yang kita agree, ni yang kau approve, ni yang berubah. dokumentasi bukan untuk menang gaduh. dia buat kau tak payah gaduh langsung.\n\nkorang pernah kena client macam ni? macam mana handle?",
         ]
     },
     "Friday": {
-        "hook": "lepas bertahun buat macam-macam, akhirnya aku jumpa satu benda yang boleh ikat semua minat aku sekali.",
+        "hook": "setiap project aku buat lebih dari yang client minta. bukan untuk client tu. untuk aku sendiri.",
         "replies": [
-            "bukan senang nak jumpa. aku explore dulu, buat banyak benda, nampak pattern apa yang aku enjoy paling banyak dan apa yang orang minta paling kerap. dari situ baru nampak satu servis yang make sense.",
-            "ambil masa nak fokus kat satu benda tu je. rasa macam rugi sebab kena tinggalkan yang lain. tapi bila dah fokus, marketing jadi senang. orang senang nak ingat kau untuk apa.",
-            "sekarang bila orang sebut servis tu, diorang ingat nama aku. bukan sebab aku seorang je yang buat. tapi sebab aku konsisten dan orang dah associate nama aku dengan benda tu. tu power fokus.",
+            "sebab hasil kerja tu bukan sekadar deliverable untuk client. dia jadi portfolio aku, bahan cerita aku, dan sebab orang refer aku ke orang lain. kalau siap sekadar siap, kau dapat bayaran je. habis situ.",
+            "tapi kalau siap sampai tahap showcase, kau dapat tiga benda: bayaran, portfolio yang kuat, dan client yang teruja nak cerita pasal kau kat orang lain. sebab tu hampir semua client aku sekarang datang dari referral.",
+            "cara fikir dia mudah: client bayar untuk kerja tu sekali je. tapi portfolio yang terhasil, kau guna berkali-kali untuk tahun-tahun akan datang. effort lebih tu bukan free work. tu investment.\n\nkorang siapkan kerja sekadar siap, atau sampai jadi showcase?",
         ]
     },
     "Saturday": {
-        "hook": "aku masih buat project yang takde siapa bayar. sampai sekarang.",
+        "hook": "aku masih buat project yang takde siapa bayar. sampai sekarang. dan ni sebab dia.",
         "replies": [
-            "bukan sebab takde kerja. ada je. tapi personal project adalah cara aku kekal sharp dan kekal excited dengan kerja aku. bila buat untuk diri sendiri, takde constraint. boleh explore sesuka hati.",
-            "dari personal project inilah aku selalu jumpa teknik baru, tools baru, cara baru nak selesaikan masalah. lepas tu bila apply kat kerja client, quality naik.",
-            "kalau kau tunggu client dulu baru nak belajar benda baru, kau akan selalu satu langkah di belakang. buat dulu untuk diri sendiri. client datang kemudian.",
+            "bukan sebab takde kerja. ada je. tapi personal project adalah cara aku kekal sharp. bila buat untuk diri sendiri, takde constraint. boleh explore sesuka hati. sempena raya buat design sendiri. jumpa tools baru terus cuba.",
+            "dari personal project la aku selalu jumpa teknik baru, tools baru, cara baru selesaikan masalah. lepas tu bila apply kat kerja client, quality naik. client tak tahu pun benda tu datang dari project suka-suka aku.",
+            "kalau tunggu client dulu baru nak belajar benda baru, kau akan selalu satu langkah di belakang. buat dulu untuk diri sendiri. client datang kemudian.\n\nkorang last buat personal project bila? tunjuk sini kalau ada.",
         ]
     },
     "Sunday": {
-        "hook": "aku bukan share pasal freelance sebab aku dah figure out semua benda. aku share sebab aku masih dalam proses.",
+        "hook": "aku share pasal freelance bukan sebab aku dah berjaya. aku share sebab aku masih dalam proses.",
         "replies": [
-            "mula dengan kerja free upah roti dan air. interview dengan hardisk. bertahun buat macam-macam sampai tak tahu describe diri sendiri apa. portfolio bersepah. referral je datang, tak ada cara nak control.",
-            "perlahan-lahan jumpa fokus. jumpa satu servis yang make sense. tapi consistency masih jadi cabaran. masih ada bulan yang senyap. masih ada masa nak procrastinate.",
-            "aku rasa ramai yang sama situasi dengan aku. skill ada, minat ada, tapi tak tahu nak arah ke mana atau macam mana nak jadi consistent. kita sama je sebenarnya. kita figure out sama-sama.",
+            "mula dengan kerja free upah roti dan air. interview bawa hardisk. bertahun buat macam-macam sampai tak tahu describe diri sendiri. portfolio bersepah. client datang dari referral je, tak boleh control bila.",
+            "perlahan-lahan jumpa fokus. belajar buat discovery call. belajar document semua benda. belajar buat setiap project jadi showcase. tapi consistency masih jadi cabaran sampai sekarang.",
+            "aku rasa ramai yang sama situasi dengan aku. skill ada, minat ada, tapi tak tahu arah mana atau macam mana nak consistent. kita figure out sama-sama.\n\napa benda paling besar korang struggle sekarang? reply, aku baca semua.",
         ]
     },
 }
+
+def save_log(text, slot, day, status, post_id=None):
+    import json
+    log_file = "log.json"
+    logs = []
+    if os.path.exists(log_file):
+        with open(log_file) as f:
+            try:
+                logs = json.load(f)
+            except:
+                logs = []
+    entry = {
+        "time": datetime.utcnow().isoformat(),
+        "day": day,
+        "slot": slot,
+        "text": text,
+        "status": status
+    }
+    if post_id:
+        entry["post_id"] = post_id
+    logs.append(entry)
+    with open(log_file, "w") as f:
+        json.dump(logs, f, ensure_ascii=False, indent=2)
 
 def post_thread():
     today = datetime.now().strftime("%A")
@@ -118,29 +141,6 @@ def post_thread():
         })
         print(f"Reply {i+1} posted: {r4.json().get('id')}")
         time.sleep(10)
-
-def save_log(text, slot, day, status, post_id=None):
-    import json
-    log_file = "log.json"
-    logs = []
-    if os.path.exists(log_file):
-        with open(log_file) as f:
-            try:
-                logs = json.load(f)
-            except:
-                logs = []
-    entry = {
-        "time": datetime.utcnow().isoformat(),
-        "day": day,
-        "slot": slot,
-        "text": text,
-        "status": status
-    }
-    if post_id:
-        entry["post_id"] = post_id
-    logs.append(entry)
-    with open(log_file, "w") as f:
-        json.dump(logs, f, ensure_ascii=False, indent=2)
 
 def already_posted_thread(day):
     import json
