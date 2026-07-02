@@ -31,11 +31,11 @@ POSTS_QUEUE = [
     # 10
     "bertahun aku buat animation, design, web, game.\n\nsetiap client kenal aku beza. portfolio bersepah. aku sendiri tak tahu describe diri sebagai apa.\n\nlepas tu aku perhatikan dua benda: apa yang aku paling enjoy, dan apa yang orang paling kerap minta. dari situ jumpa satu servis yang gabung semua minat aku.\n\nsekarang asal orang sebut servis tu, terus ingat nama aku.\n\nkorang dah jumpa benda korang atau masih explore?",
     # 11
-    "perasaan bila orang mula associate nama kau dengan satu benda, lain macam sikit.\n\ndulu orang tanya aku buat apa, aku explain panjang. diorang confused.\n\nlepas aku fokus satu benda, aku jawab satu ayat je. diorang faham terus.\n\nkalau korang kena describe diri korang dalam satu ayat, apa ayat dia?",
+    "dulu bila orang tanya aku buat apa, aku explain panjang lebar. habis explain, diorang angguk tapi aku tahu diorang tak faham.\n\nsekarang aku jawab satu ayat je. terus faham.\n\nbukan sebab kerja aku berubah. sebab aku dah jelas nak fokus kat apa.\n\nbila kau sendiri jelas apa kau buat, orang lain senang nak ingat kau. dan senang nak refer kau kat orang lain.\n\nkalau korang kena describe kerja korang dalam satu ayat, apa ayat dia?",
     # 12
     "aku masih buat project yang takde siapa bayar. sampai sekarang.\n\nbukan sebab takde kerja. tapi itu cara aku kekal sharp. takde constraint, boleh explore sesuka hati. dari situ aku jumpa teknik baru, tools baru. bila apply kat kerja client, quality naik.\n\nkalau tunggu client dulu baru nak belajar, kau selalu satu langkah di belakang.\n\nkorang last buat personal project bila?",
     # 13
-    "orang selalu kata jangan buat kerja yang kau suka, nanti hilang minat.\n\naku tak setuju.\n\naku buat kerja yang aku minat dari dulu sampai sekarang. sebab tu aku boleh buat lagi baik dari orang yang buat sebab duit je.\n\nminat tak hilang bila kau buat kerja. minat hilang bila kau buat kerja yang salah.\n\nkorang team mana: kerja ikut minat, atau minat jangan jadikan kerja?",
+    "ramai tanya macam mana nak tahu kerja apa yang sesuai.\n\njawapan aku, mula dengan benda yang kau ada minat sikit. tak payah tunggu passion besar datang.\n\nsebab bila kau buat benda yang kau minat, kau buat bukan semata duit. kau explore lebih, belajar lebih, dan kau pergi lebih laju dari orang yang buat sebab terpaksa.\n\nminat sikit tu dah cukup untuk mula. yang lain tumbuh sambil jalan.\n\nkorang sekarang buat kerja yang korang minat ke?",
     # 14
     "hampir semua client aku datang dari referral.\n\nkawan refer. company lama refer. orang yang pernah tengok kerja aku refer. aku tak pergi cari pun.\n\ntapi masalahnya referral tak consistent. ada bulan banyak, ada bulan senyap. dan aku tak boleh control bila diorang datang.\n\nkorang punya client selalu datang dari mana?",
     # 15
@@ -52,6 +52,8 @@ POSTS_QUEUE = [
     "aku pernah ambil kerja murah sebab minat sangat nak buat.\n\nbayaran tak seberapa. tapi aku buat lebih 100%. explore tools baru, polish sampai puas hati sendiri.\n\nkerja tu jadi showcase terbaik dalam portfolio aku. dan dari situ dapat tawaran lagi tinggi.\n\npernah tak korang buat kerja yang usaha lebih dari bayaran? berbaloi ke?",
     # 21
     "dulu bila client reject kerja tanpa sebab, aku terus refund. malas nak pening.\n\ntapi lepas tu aku belajar: document semua benda. setiap progress, setiap request, setiap approval. dalam whatsapp, email. project besar aku siap buat website khas untuk client tengok progress.\n\nsekarang kalau client bantah, aku tunjuk record je. tak payah gaduh.\n\nkorang pernah kena client macam ni? macam mana handle?",
+    # 22
+    "kawan selalu cakap, kau okay la, memang pandai, kreatif. senang la nak buat kerja macam ni.\n\naku tak berapa setuju.\n\nsebab kreatif ni bukan benda lahir terus ada. dia boleh didevelop. permulaan dulu aku tiru je cara orang lain buat, lama jugak. tiru, ubah sikit, tiru, ubah sikit. dari situ perlahan lahan keluar cara sendiri.\n\nyang penting bukan bakat. yang penting usaha dengan disiplin.\n\nkorang rasa kreatif ni bakat semula jadi ke boleh dilatih?",
 ]
 
 def my_now():
