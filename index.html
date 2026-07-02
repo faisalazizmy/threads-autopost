@@ -76,7 +76,7 @@
 </head>
 <body>
   <h1>Threads Auto Post</h1>
-  <p class="handle">@fsalz.wfh — auto posting sistem <span style="opacity:.35;font-size:10px">v5.2</span></p>
+  <p class="handle">@fsalz.wfh — auto posting sistem <span style="opacity:.35;font-size:10px">v5.3</span></p>
 
   <div class="next-box">
     <div>
@@ -97,6 +97,7 @@
     <button id="sched-btn" onclick="toggleSchedule()" style="background:none;border:1px solid #30363d;color:#8b949e;border-radius:6px;padding:3px 10px;font-size:11px;cursor:pointer">⏸ Stop Schedule</button>
   </div>
   <div id="schedule-cal"></div>
+  <button id="load-more-btn" onclick="loadMoreDays()" style="display:none;width:100%;background:none;border:1px dashed #30363d;color:#8b949e;border-radius:8px;padding:8px 0;font-size:12px;cursor:pointer;margin-bottom:8px">⌄ Tunjuk lagi 7 hari</button>
 
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
     <div class="section-title" style="margin-bottom:0">Performance</div>
@@ -206,7 +207,16 @@
       document.getElementById('countdown').textContent = formatCountdown(msUntil);
     }
 
+    let schedDays = 7;
+    let lastLogs = [];
+
+    function loadMoreDays() {
+      schedDays += 7;
+      buildSchedule(lastLogs);
+    }
+
     function buildSchedule(logs) {
+      lastLogs = logs;
       const now = getMYTime();
       const cal = document.getElementById('schedule-cal');
 
@@ -225,7 +235,7 @@
       const fmtDate = dt => dt.getFullYear() + '-' + String(dt.getMonth()+1).padStart(2,'0') + '-' + String(dt.getDate()).padStart(2,'0');
 
       cal.innerHTML = '';
-      for (let d = 0; d < 7; d++) {
+      for (let d = 0; d < schedDays; d++) {
         const date = new Date(now);
         date.setDate(date.getDate() + d);
         const isToday = d === 0;
@@ -279,6 +289,9 @@
             ${rowsHtml}
           </div>`;
       }
+
+      const moreBtn = document.getElementById('load-more-btn');
+      moreBtn.style.display = qPtr < upcoming.length ? 'block' : 'none';
     }
 
     function buildLog(logs) {
