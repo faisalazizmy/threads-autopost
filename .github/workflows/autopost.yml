@@ -33,6 +33,10 @@ jobs:
           THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
           THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
         run: |
+          if [ "${{ github.event_name }}" = "schedule" ] && [ -f paused.flag ]; then
+            echo "Schedule paused (paused.flag wujud) — skip."
+            exit 0
+          fi
           FORCE="${{ github.event.inputs.force_slot }}"
           HOUR=$(TZ=Asia/Kuala_Lumpur date +%H)
           SLOT="${FORCE:-}"

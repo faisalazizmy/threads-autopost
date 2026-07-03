@@ -76,7 +76,7 @@
 </head>
 <body>
   <h1>Threads Auto Post</h1>
-  <p class="handle">@fsalz.wfh — auto posting sistem <span style="opacity:.35;font-size:10px">v5.3</span></p>
+  <p class="handle">@fsalz.wfh — auto posting sistem <span style="opacity:.35;font-size:10px">v6.0</span></p>
 
   <div class="next-box">
     <div>
@@ -124,30 +124,7 @@
   <div id="log"><div class="empty">memuatkan...</div></div>
 
   <script>
-    const QUEUE = [
-      "upah project pertama aku roti dan air je.\n\ntapi aku ambil jugak. dan benda paling berharga aku dapat bukan upah tu.\n\nmasa buat project tu aku belajar banyak gila. explore tools, cuba semua benda. walaupun upah roti, aku buat macam project beribu.\n\ndan hasil tu la jadi portfolio pertama aku. sebab dia, project seterusnya datang.\n\nuntuk permulaan, ilmu yang kau dapat lagi berharga dari duit yang kau dapat.\n\nkorang punya first project dulu macam mana?",
-      "interview kerja pertama aku, aku bawa hardisk.\n\ntakde resume cantik. takde sijil nak tunjuk. aku terus tunjuk kerja dari situ.\n\ndiorang tengok, diam sekejap, terus tanya bila boleh start.\n\nkorang pernah dapat kerja sebab portfolio, bukan sebab resume?",
-      "aku tak start freelance dengan target nak jadi fulltime pun.\n\njust nak duit lebih. buat bila ada masa lapang. takde tekanan.\n\ntapi sebab buat dengan enjoy, kerja jadi lagi baik. client happy, dapat refer ke orang lain.\n\nkorang start freelance sebab apa? duit, minat, atau terpaksa?",
-      "aku perasan ada dua jenis client.\n\nsatu, yang nak jumpa depan depan atau kat ofis. dua, yang okay je meeting online.\n\npengalaman aku: client yang nak jumpa depan depan ni biasanya susah nak close. aku pun tak tahu kenapa. dah la keluar kos, duit minyak, masa perjalanan.\n\nsekarang semua meeting aku buat online dulu. jimat masa, dan aku boleh present hasil kerja dengan lebih baik atas skrin. lepas close baru decide nak jumpa ke tak. servis digital kan.\n\nkorang pernah perasan pattern ni ke?",
-      "masalah aku dulu: aku minat buat banyak benda.\n\nanimation, game, design, web. semua aku cuba. semua aku ambil kalau ada orang tanya.\n\nrasa macam bagus sebab serba boleh. tapi bila orang tanya aku buat apa, aku jawab freelancer je. generic. tak ada siapa ingat.\n\nkorang jenis fokus satu benda ke minat banyak benda macam aku?",
-      "aku tak pernah dapat kerja sebab sijil.\n\nselalu sebab orang tengok kerja aku terus. sijil aku ada. tapi tak pernah jadi faktor pun.\n\nkalau kau ada kerja yang boleh tunjuk, sijil jadi decoration je.\n\nsetuju ke tak? aku nak dengar pendapat korang.",
-      "client tanya harga, aku tak bagi terus.\n\naku takde rate card. aku ajak online meeting 15 sampai 30 minit, aku panggil discovery call. masa tu aku present hasil kerja betul betul, sambil study business diorang.\n\nhabis meeting aku hantar custom quotation ikut apa yang aku belajar. bukan template.\n\ntrust dah terbina sebelum harga disebut. peluang dapat project sangat tinggi.\n\nkorang bagi harga terus atau meeting dulu?",
-      "benda pelik yang aku belajar: client yang bayar mahal, lagi senang layan.\n\ndiorang describe details, tahu apa yang diorang nak. kerja jadi mudah sebab arah dah jelas.\n\nclient yang murah pulak selalunya baru nak start. serah kerja tanpa details. lepas siap baru demand macam macam, dan asyik berubah.\n\nharga murah tak bermaksud kerja senang. selalunya sebaliknya.\n\nkorang pernah kena tak? client paling murah, kerenah paling banyak?",
-      "sebab aku minat, aku tak rasa penat walaupun kerja lama.\n\norang lain kena paksa buat overtime. aku buat overtime sendiri sebab nak polish lagi.\n\nbukan semua orang ada benda tu. dan bila client nampak perbezaan tu, diorang ingat kau.\n\nkorang pernah tak sedar dah kerja berjam-jam sebab seronok?",
-      "bertahun aku buat animation, design, web, game.\n\nsetiap client kenal aku beza. portfolio bersepah. aku sendiri tak tahu describe diri sebagai apa.\n\nlepas tu aku perhatikan dua benda: apa yang aku paling enjoy, dan apa yang orang paling kerap minta. dari situ jumpa satu servis yang gabung semua minat aku.\n\nsekarang asal orang sebut servis tu, terus ingat nama aku.\n\nkorang dah jumpa benda korang atau masih explore?",
-      "dulu bila orang tanya aku buat apa, aku explain panjang lebar. habis explain, diorang angguk tapi aku tahu diorang tak faham.\n\nsekarang aku jawab satu ayat je. terus faham.\n\nbukan sebab kerja aku berubah. sebab aku dah jelas nak fokus kat apa.\n\nbila kau sendiri jelas apa kau buat, orang lain senang nak ingat kau. dan senang nak refer kau kat orang lain.\n\nkalau korang kena describe kerja korang dalam satu ayat, apa ayat dia?",
-      "aku masih buat project yang takde siapa bayar. sampai sekarang.\n\nbukan sebab takde kerja. tapi itu cara aku kekal sharp. takde constraint, boleh explore sesuka hati. dari situ aku jumpa teknik baru, tools baru. bila apply kat kerja client, quality naik.\n\nkalau tunggu client dulu baru nak belajar, kau selalu satu langkah di belakang.\n\nkorang last buat personal project bila?",
-      "ramai tanya macam mana nak tahu kerja apa yang sesuai.\n\njawapan aku, mula dengan benda yang kau ada minat sikit. tak payah tunggu passion besar datang.\n\nsebab bila kau buat benda yang kau minat, kau buat bukan semata duit. kau explore lebih, belajar lebih, dan kau pergi lebih laju dari orang yang buat sebab terpaksa.\n\nminat sikit tu dah cukup untuk mula. yang lain tumbuh sambil jalan.\n\nkorang sekarang buat kerja yang korang minat ke?",
-      "hampir semua client aku datang dari referral.\n\nkawan refer. company lama refer. orang yang pernah tengok kerja aku refer. aku tak pergi cari pun.\n\ntapi masalahnya referral tak consistent. ada bulan banyak, ada bulan senyap. dan aku tak boleh control bila diorang datang.\n\nkorang punya client selalu datang dari mana?",
-      "setiap project aku buat lebih dari yang client minta. bukan untuk client tu. untuk aku sendiri.\n\nsebab hasil kerja tu bukan sekadar deliverable. dia jadi portfolio aku, bahan cerita aku, sebab orang refer aku.\n\nclient bayar sekali je. tapi portfolio yang terhasil, aku guna berkali kali untuk tahun tahun akan datang. effort lebih tu bukan free work. tu investment.\n\nkorang siapkan kerja sekadar siap, atau sampai jadi showcase?",
-      "benda paling aku struggle sampai sekarang bukan skill.\n\nbukan cari client. bukan bayaran. tapi consistency.\n\nada masa aku productive gila, siap kerja berlambak. ada masa aku procrastinate sampai deadline dah dekat baru gerak.\n\nkorang struggle dengan apa paling banyak? jom confess sini.",
-      "kalau boleh balik masa, aku nak cakap satu benda je dengan diri sendiri yang dulu.\n\nfokus lagi awal.\n\nbukan maksud tak boleh explore. explore kena. tapi kena ada satu anchor yang ikat semua tu. tanpa anchor, kau spend bertahun buat banyak benda tapi tak pergi mana.\n\nkorang nak cakap apa dengan diri sendiri 5 tahun lepas?",
-      "aku share pasal freelance bukan sebab dah berjaya. aku masih dalam proses.\n\nmula dengan kerja free upah roti dan air. interview bawa hardisk. bertahun buat macam macam sampai portfolio bersepah. perlahan lahan jumpa fokus. tapi consistency masih jadi cabaran.\n\nramai aku rasa sama situasi. skill ada, minat ada, tapi tak tahu arah. kita figure out sama sama.\n\napa benda paling besar korang struggle sekarang?",
-      "spark aku datang dari dua benda yang berlaku serentak.\n\nmak aku cikgu. ada laptop. aku explore teknologi, tengok apa yang boleh aku hasilkan dengan benda tu.\n\nmakcik aku belajar multimedia. aku tengok dia buat kerja.\n\nvideo pertama aku buat untuk sepupu sendiri. guna je tools yang ada dalam laptop tu. tak tunggu semua cukup dulu.\n\ncara orang dapat spark memang beza. tapi cara guna dia sama: mula dengan apa yang ada depan mata.\n\nkorang punya spark datang dari mana? aku nak baca semua.",
-      "aku pernah ambil kerja murah sebab minat sangat nak buat.\n\nbayaran tak seberapa. tapi aku buat lebih 100%. explore tools baru, polish sampai puas hati sendiri.\n\nkerja tu jadi showcase terbaik dalam portfolio aku. dan dari situ dapat tawaran lagi tinggi.\n\npernah tak korang buat kerja yang usaha lebih dari bayaran? berbaloi ke?",
-      "dulu bila client reject kerja tanpa sebab, aku terus refund. malas nak pening.\n\ntapi lepas tu aku belajar: document semua benda. setiap progress, setiap request, setiap approval. dalam whatsapp, email. project besar aku siap buat website khas untuk client tengok progress.\n\nsekarang kalau client bantah, aku tunjuk record je. tak payah gaduh.\n\nkorang pernah kena client macam ni? macam mana handle?",
-      "kawan selalu cakap, kau okay la, memang pandai, kreatif. senang la nak buat kerja macam ni.\n\naku tak berapa setuju.\n\nsebab kreatif ni bukan benda lahir terus ada. dia boleh didevelop. permulaan dulu aku tiru je cara orang lain buat, lama jugak. tiru, ubah sikit, tiru, ubah sikit. dari situ perlahan lahan keluar cara sendiri.\n\nyang penting bukan bakat. yang penting usaha dengan disiplin.\n\nkorang rasa kreatif ni bakat semula jadi ke boleh dilatih?",
-    ];
+    let QUEUE = [];
 
     const SLOTS = [
       { key: 'pagi',  label: 'Pagi',  hour: 8 },
@@ -256,7 +233,7 @@
           } else {
             const item = upcoming[qPtr];
             if (item) {
-              preview = '<span style="opacity:.45">#' + (item.idx + 1) + '</span> ' + item.text;
+              preview = '<span style="opacity:.45">#' + (item.idx + 1) + '</span> <span class="q-text">' + item.text + '</span>';
               qPtr++;
             } else {
               preview = 'Queue habis. Tambah content baru.';
@@ -267,7 +244,8 @@
               badge = '<span class="badge b-fail">Terlepas</span>';
             }
             if (item) {
-              pushBtn = `<button class="push-btn" id="${btnId}" onclick="triggerSlot('${s.key}','${btnId}')">▶ Post sekarang</button>`;
+              pushBtn = `<button class="push-btn" id="${btnId}" onclick="triggerSlot('${s.key}','${btnId}')">▶ Post sekarang</button>
+                <button class="push-btn" onclick="editQueueItem(${item.idx}, this)">✎ Edit</button>`;
             }
           }
 
@@ -427,62 +405,147 @@
         .catch(e => { document.getElementById('runs').innerHTML = `<span style="color:#f85149">fetch error: ${e.message}</span>`; });
     }
 
+    const REPO_API = 'https://api.github.com/repos/faisalazizmy/threads-autopost';
+    function ghHeaders() {
+      return { 'Authorization': 'Bearer ' + getToken(), 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json' };
+    }
+    function b64encode(str) { return btoa(unescape(encodeURIComponent(str))); }
+    function b64decode(str) { return decodeURIComponent(escape(atob(str))); }
+
+    function setSchedUI(paused) {
+      const btn = document.getElementById('sched-btn');
+      if (paused) {
+        btn.textContent = '▶ Resume Schedule';
+        btn.style.color = '#f85149';
+        btn.style.borderColor = '#f85149';
+      } else {
+        btn.textContent = '⏸ Stop Schedule';
+        btn.style.color = '#8b949e';
+        btn.style.borderColor = '#30363d';
+      }
+      setSchedPaused(paused);
+    }
+
+    // Pause guna file paused.flag — workflow kekal enabled, manual post sentiasa jalan
     async function toggleSchedule() {
       const token = getToken();
       if (!token) { setToken(); return; }
       const btn = document.getElementById('sched-btn');
       btn.disabled = true;
       btn.textContent = '...';
-
-      const base = 'https://api.github.com/repos/faisalazizmy/threads-autopost/actions/workflows/autopost.yml';
-      const headers = { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github+json' };
-
-      // check current state
-      const res = await fetch(base, { headers });
-      const wf = await res.json();
-      const isActive = wf.state === 'active';
-
-      // toggle
-      await fetch(`${base}/${isActive ? 'disable' : 'enable'}`, { method: 'PUT', headers });
-
+      try {
+        const api = REPO_API + '/contents/paused.flag';
+        const r = await fetch(api + '?t=' + Date.now(), { headers: ghHeaders() });
+        if (r.status === 200) {
+          const j = await r.json();
+          await fetch(api, { method: 'DELETE', headers: ghHeaders(),
+            body: JSON.stringify({ message: 'resume schedule', sha: j.sha }) });
+          setSchedUI(false);
+        } else {
+          await fetch(api, { method: 'PUT', headers: ghHeaders(),
+            body: JSON.stringify({ message: 'pause schedule', content: b64encode('paused\n') }) });
+          setSchedUI(true);
+        }
+      } catch (e) { alert('Gagal tukar schedule: ' + e.message); }
       btn.disabled = false;
-      if (isActive) {
-        btn.textContent = '▶ Resume Schedule';
-        btn.style.color = '#f85149';
-        btn.style.borderColor = '#f85149';
-        setSchedPaused(true);
-      } else {
-        btn.textContent = '⏸ Stop Schedule';
-        btn.style.color = '#8b949e';
-        btn.style.borderColor = '#30363d';
-        setSchedPaused(false);
-      }
     }
 
     async function initSchedBtn() {
-      const token = getToken();
-      if (!token) return;
-      const btn = document.getElementById('sched-btn');
-      const res = await fetch('https://api.github.com/repos/faisalazizmy/threads-autopost/actions/workflows/autopost.yml', {
-        headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github+json' }
-      });
-      const wf = await res.json();
-      if (wf.state !== 'active') {
-        btn.textContent = '▶ Resume Schedule';
-        btn.style.color = '#f85149';
-        btn.style.borderColor = '#f85149';
-        setSchedPaused(true);
-      }
+      try {
+        let paused;
+        if (getToken()) {
+          const r = await fetch(REPO_API + '/contents/paused.flag?t=' + Date.now(), { headers: ghHeaders() });
+          paused = r.status === 200;
+        } else {
+          const r = await fetch('paused.flag?t=' + Date.now());
+          paused = r.ok;
+        }
+        if (paused) setSchedUI(true);
+      } catch (e) {}
     }
 
-    function refreshLog() {
+    // Edit content dalam queue, save terus ke repo
+    function editQueueItem(idx, btn) {
+      const row = btn.closest('.cal-row');
+      if (row.querySelector('textarea')) return;
+      const textDiv = row.querySelector('.cal-text');
+      const orig = QUEUE[idx];
+      textDiv.innerHTML = '';
+
+      const ta = document.createElement('textarea');
+      ta.value = orig;
+      ta.style.cssText = 'width:100%;min-height:150px;background:#0d1117;color:#e6edf3;border:1px solid #58a6ff;border-radius:6px;padding:10px;font-size:13px;font-family:inherit;line-height:1.5';
+
+      const counter = document.createElement('div');
+      counter.style.cssText = 'font-size:11px;margin:4px 0;color:#8b949e';
+      const updateCount = () => {
+        counter.textContent = ta.value.length + ' / 500 aksara';
+        counter.style.color = ta.value.length > 500 ? '#f85149' : '#8b949e';
+      };
+      ta.addEventListener('input', updateCount);
+      updateCount();
+
+      const saveBtn = document.createElement('button');
+      saveBtn.className = 'push-btn';
+      saveBtn.style.cssText = 'width:auto;padding:4px 14px;margin-right:8px';
+      saveBtn.textContent = '💾 Save';
+      const cancelBtn = document.createElement('button');
+      cancelBtn.className = 'push-btn';
+      cancelBtn.style.cssText = 'width:auto;padding:4px 14px';
+      cancelBtn.textContent = 'Batal';
+
+      saveBtn.onclick = async () => {
+        const newText = ta.value.trim();
+        if (!newText) { alert('Content kosong.'); return; }
+        if (newText.length > 500) { alert('Melebihi 500 aksara (limit Threads). Sekarang: ' + newText.length); return; }
+        if (!getToken()) { setToken(); return; }
+        saveBtn.disabled = true;
+        saveBtn.textContent = '⟳ Saving...';
+        try {
+          const api = REPO_API + '/contents/queue.json';
+          const r = await fetch(api + '?t=' + Date.now(), { headers: ghHeaders() });
+          if (!r.ok) throw new Error('gagal baca queue.json (' + r.status + ')');
+          const j = await r.json();
+          const latest = JSON.parse(b64decode(j.content.replace(/\n/g, '')));
+          latest[idx] = newText;
+          const put = await fetch(api, { method: 'PUT', headers: ghHeaders(),
+            body: JSON.stringify({
+              message: 'edit queue #' + (idx + 1) + ' dari dashboard',
+              content: b64encode(JSON.stringify(latest, null, 2)),
+              sha: j.sha
+            }) });
+          if (!put.ok) throw new Error('gagal save (' + put.status + ')');
+          QUEUE = latest;
+          buildSchedule(lastLogs);
+        } catch (e) {
+          alert('Gagal save: ' + e.message);
+          saveBtn.disabled = false;
+          saveBtn.textContent = '💾 Save';
+        }
+      };
+      cancelBtn.onclick = () => buildSchedule(lastLogs);
+
+      textDiv.appendChild(ta);
+      textDiv.appendChild(counter);
+      textDiv.appendChild(saveBtn);
+      textDiv.appendChild(cancelBtn);
+      ta.focus();
+    }
+
+    async function refreshLog() {
       const btn = document.getElementById('refresh-btn');
       btn.textContent = '↻ ...';
       btn.disabled = true;
-      fetch('log.json?t=' + Date.now())
-        .then(r => r.json())
-        .then(data => { buildSchedule(data); buildLog(data); buildPerf(data); btn.textContent = '↻ Refresh'; btn.disabled = false; })
-        .catch(() => { btn.textContent = '↻ Refresh'; btn.disabled = false; });
+      try {
+        const [logs, q] = await Promise.all([
+          fetch('log.json?t=' + Date.now()).then(r => r.json()),
+          fetch('queue.json?t=' + Date.now()).then(r => r.json()),
+        ]);
+        QUEUE = q;
+        buildSchedule(logs); buildLog(logs); buildPerf(logs);
+      } catch (e) {}
+      btn.textContent = '↻ Refresh';
+      btn.disabled = false;
     }
 
     refreshLog();
