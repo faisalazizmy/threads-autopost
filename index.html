@@ -89,7 +89,7 @@
 </head>
 <body>
   <h1>Threads Auto Post</h1>
-  <p class="handle">@fsalz.wfh — auto posting sistem <span style="opacity:.35;font-size:10px">v6.3</span></p>
+  <p class="handle">@fsalz.wfh — auto posting sistem <span style="opacity:.35;font-size:10px">v6.4</span></p>
 
   <div class="next-box">
     <div>
@@ -138,6 +138,7 @@
 
   <script>
     let QUEUE = [];
+    let COVERS = {};
 
     const SLOTS = [
       { key: 'pagi',  label: 'Pagi',  hour: 8 },
@@ -246,7 +247,8 @@
           } else {
             const item = upcoming[qPtr];
             if (item) {
-              preview = '<span style="opacity:.45">#' + (item.idx + 1) + '</span> <span class="q-text">' + item.text + '</span>';
+              const hasCover = COVERS[String(item.idx)] ? '<span title="ada cover gambar">🖼 </span>' : '';
+              preview = '<span style="opacity:.45">#' + (item.idx + 1) + '</span> ' + hasCover + '<span class="q-text">' + item.text + '</span>';
               qPtr++;
             } else {
               preview = 'Queue habis. Tambah content baru.';
@@ -585,11 +587,13 @@
       const btn = document.getElementById('refresh-btn');
       if (!silent) { btn.textContent = '↻ ...'; btn.disabled = true; }
       try {
-        const [logs, q] = await Promise.all([
+        const [logs, q, cov] = await Promise.all([
           fetch('log.json?t=' + Date.now()).then(r => r.json()),
           fetch('queue.json?t=' + Date.now()).then(r => r.json()),
+          fetch('covers.json?t=' + Date.now()).then(r => r.ok ? r.json() : {}).catch(() => ({})),
         ]);
         QUEUE = q;
+        COVERS = cov || {};
         buildSchedule(logs); buildLog(logs); buildPerf(logs);
       } catch (e) {}
       if (!silent) { btn.textContent = '↻ Refresh'; btn.disabled = false; }

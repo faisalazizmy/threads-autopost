@@ -8,9 +8,19 @@ from datetime import datetime, timedelta
 ACCESS_TOKEN = os.environ.get("THREADS_ACCESS_TOKEN")
 USER_ID = os.environ.get("THREADS_USER_ID", "36445274191783117")
 LOG_FILE = "log.json"
+PAGES_BASE = "https://faisalazizmy.github.io/threads-autopost/"
 
 with open("queue.json") as f:
     POSTS_QUEUE = json.load(f)
+
+# map: idx (str) -> cover image path, kalau content tu ada gambar
+COVERS = {}
+if os.path.exists("covers.json"):
+    with open("covers.json") as f:
+        try:
+            COVERS = json.load(f)
+        except:
+            COVERS = {}
 
 def my_now():
     return datetime.utcnow() + timedelta(hours=8)
@@ -54,11 +64,24 @@ def next_idx(logs):
     return None
 
 def post(text, slot, idx):
-    r = requests.post(f"https://graph.threads.net/v1.0/{USER_ID}/threads", data={
-        "media_type": "TEXT",
-        "text": text,
-        "access_token": ACCESS_TOKEN
-    })
+    cover = COVERS.get(str(idx))
+    if cover:
+        # post gambar (cover) + caption
+        image_url = PAGES_BASE + cover
+        data = {
+            "media_type": "IMAGE",
+            "image_url": image_url,
+            "text": text,
+            "access_token": ACCESS_TOKEN
+        }
+        print(f"Post dengan gambar: {image_url}")
+    else:
+        data = {
+            "media_type": "TEXT",
+            "text": text,
+            "access_token": ACCESS_TOKEN
+        }
+    r = requests.post(f"https://graph.threads.net/v1.0/{USER_ID}/threads", data=data)
     cid = r.json().get("id")
     if not cid:
         print(f"Gagal create: {r.json()}")
