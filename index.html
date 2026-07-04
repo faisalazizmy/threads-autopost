@@ -89,7 +89,7 @@
 </head>
 <body>
   <h1>Threads Auto Post</h1>
-  <p class="handle">@fsalz.wfh — auto posting sistem <span style="opacity:.35;font-size:10px">v6.1</span></p>
+  <p class="handle">@fsalz.wfh — auto posting sistem <span style="opacity:.35;font-size:10px">v6.2</span></p>
 
   <div class="next-box">
     <div>
@@ -477,12 +477,40 @@
       } catch (e) {}
     }
 
+    let editing = false;
+
+    // Tarik queue TERKINI dari server (elak tindih walau tak refresh)
+    async function fetchQueueLatest() {
+      const token = getToken();
+      if (token) {
+        const r = await fetch(REPO_API + '/contents/queue.json?t=' + Date.now(), { headers: ghHeaders() });
+        if (r.ok) { const j = await r.json(); return JSON.parse(b64decode(j.content.replace(/\n/g, ''))); }
+      }
+      return await fetch('queue.json?t=' + Date.now()).then(r => r.json());
+    }
+
     // Edit content dalam queue, save terus ke repo
-    function editQueueItem(idx, btn) {
+    async function editQueueItem(idx, btn) {
       const row = btn.closest('.cal-row');
       if (row.querySelector('textarea')) return;
       const textDiv = row.querySelector('.cal-text');
-      const orig = QUEUE[idx];
+
+      // ambil content terkini dari server dulu, bukan dari cache browser
+      btn.disabled = true;
+      const prevLabel = btn.textContent;
+      btn.textContent = '⟳';
+      let orig;
+      try {
+        QUEUE = await fetchQueueLatest();
+        orig = QUEUE[idx];
+      } catch (e) {
+        alert('Gagal tarik content terkini: ' + e.message);
+        btn.disabled = false; btn.textContent = prevLabel;
+        return;
+      }
+      btn.disabled = false; btn.textContent = prevLabel;
+
+      editing = true;
       textDiv.innerHTML = '';
 
       const ta = document.createElement('textarea');
@@ -533,6 +561,7 @@
             }) });
           if (!put.ok) throw new Error('gagal save (' + put.status + ')');
           QUEUE = latest;
+          editing = false;
           buildSchedule(lastLogs);
         } catch (e) {
           alert('Gagal save: ' + e.message);
@@ -540,7 +569,7 @@
           saveBtn.textContent = '💾 Save';
         }
       };
-      cancelBtn.onclick = () => buildSchedule(lastLogs);
+      cancelBtn.onclick = () => { editing = false; buildSchedule(lastLogs); };
 
       actions.appendChild(saveBtn);
       actions.appendChild(cancelBtn);
@@ -550,10 +579,9 @@
       ta.focus();
     }
 
-    async function refreshLog() {
+    async function loadData(silent) {
       const btn = document.getElementById('refresh-btn');
-      btn.textContent = '↻ ...';
-      btn.disabled = true;
+      if (!silent) { btn.textContent = '↻ ...'; btn.disabled = true; }
       try {
         const [logs, q] = await Promise.all([
           fetch('log.json?t=' + Date.now()).then(r => r.json()),
@@ -562,12 +590,15 @@
         QUEUE = q;
         buildSchedule(logs); buildLog(logs); buildPerf(logs);
       } catch (e) {}
-      btn.textContent = '↻ Refresh';
-      btn.disabled = false;
+      if (!silent) { btn.textContent = '↻ Refresh'; btn.disabled = false; }
     }
+    function refreshLog() { return loadData(false); }
 
     refreshLog();
     initSchedBtn();
+
+    // Auto-refresh status tiap 30 saat (tak ganggu masa tengah edit)
+    setInterval(() => { if (!editing) loadData(true); }, 30000);
   </script>
 </body>
 </html>
