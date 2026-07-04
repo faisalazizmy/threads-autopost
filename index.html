@@ -89,7 +89,7 @@
 </head>
 <body>
   <h1>Threads Auto Post</h1>
-  <p class="handle">@fsalz.wfh — auto posting sistem <span style="opacity:.35;font-size:10px">v6.2</span></p>
+  <p class="handle">@fsalz.wfh — auto posting sistem <span style="opacity:.35;font-size:10px">v6.3</span></p>
 
   <div class="next-box">
     <div>
@@ -257,7 +257,7 @@
               badge = '<span class="badge b-fail">Terlepas</span>';
             }
             if (item) {
-              pushBtn = `<button class="push-btn" id="${btnId}" onclick="triggerSlot('${s.key}','${btnId}')">▶ Post sekarang</button>
+              pushBtn = `<button class="push-btn" id="${btnId}" onclick="triggerSlot('${s.key}','${btnId}',${item.idx})">▶ Post #${item.idx + 1}</button>
                 <button class="push-btn" onclick="editQueueItem(${item.idx}, this)">✎ Edit</button>`;
             }
           }
@@ -359,7 +359,7 @@
       }
     }
 
-    async function triggerSlot(slot, btnId) {
+    async function triggerSlot(slot, btnId, idx) {
       const token = getToken();
       if (!token) { setToken(); return; }
       const btn = document.getElementById(btnId || 'pushbtn-0-' + slot);
@@ -368,10 +368,12 @@
       btn.className = 'push-btn pushing';
       btn.textContent = '⟳ Triggering...';
       try {
+        const inputs = { force_slot: slot };
+        if (idx !== undefined && idx !== null && idx !== '') inputs.force_idx = String(idx);
         const r = await fetch('https://api.github.com/repos/faisalazizmy/threads-autopost/actions/workflows/autopost.yml/dispatches', {
           method: 'POST',
           headers: { 'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json' },
-          body: JSON.stringify({ ref: 'main', inputs: { force_slot: slot } })
+          body: JSON.stringify({ ref: 'main', inputs })
         });
         if (r.status === 204) {
           btn.className = 'push-btn pushed';

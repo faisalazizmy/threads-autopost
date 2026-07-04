@@ -10,6 +10,10 @@ on:
         description: 'Force slot (pagi/malam). Kosong = auto detect by hour.'
         required: false
         default: ''
+      force_idx:
+        description: 'Post content spesifik ikut nombor queue (0-based). Kosong = ikut turutan.'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -46,8 +50,8 @@ jobs:
             else echo "Tiada slot untuk jam $HOUR MYT — skip."; exit 0
             fi
           fi
-          echo "Running slot: $SLOT"
-          python post_today.py $SLOT
+          echo "Running slot: $SLOT (idx: ${{ github.event.inputs.force_idx }})"
+          python post_today.py "$SLOT" "${{ github.event.inputs.force_idx }}"
 
       - name: Fetch insights
         env:

@@ -78,12 +78,29 @@ def post(text, slot, idx):
         save_log(text, slot, "fail", idx)
 
 slot = sys.argv[1] if len(sys.argv) > 1 else None
+force_idx = sys.argv[2].strip() if len(sys.argv) > 2 and sys.argv[2].strip() != "" else None
+
+def already_posted_idx(idx, logs):
+    return any(l.get("idx") == idx and l.get("status") == "ok" for l in logs)
 
 if slot not in ("pagi", "malam"):
     print("Sila masukkan slot: pagi / malam")
 else:
     logs = load_logs()
-    if already_posted_today(slot, logs):
+    if force_idx is not None:
+        # Post content spesifik ikut nombor queue (manual pick dari dashboard)
+        try:
+            idx = int(force_idx)
+        except ValueError:
+            print(f"force_idx tak sah: {force_idx}")
+            sys.exit(0)
+        if idx < 0 or idx >= len(POSTS_QUEUE):
+            print(f"force_idx di luar julat queue: {idx}")
+        elif already_posted_idx(idx, logs):
+            print(f"Content #{idx+1} dah dipost sebelum ni — skip.")
+        else:
+            post(POSTS_QUEUE[idx], slot, idx)
+    elif already_posted_today(slot, logs):
         print(f"Slot '{slot}' hari ni dah dipost — skip.")
     else:
         idx = next_idx(logs)
